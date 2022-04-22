@@ -8,6 +8,7 @@ print()
 app = Flask(__name__)
 
 ADMIN_PASTES = os.path.join(os.getcwd(), "data", "admin")
+ANON_PASTES = os.path.join(os.getcwd(), "data", "other")
 
 
 def bytes2KB(value: int):
@@ -26,11 +27,27 @@ def index():
             {
                 "name": admin_post_file_name,
                 "size": bytes2KB(admin_post_file_name_stats.st_size),
-                "creation": datetime.utcfromtimestamp(int(admin_post_file_name_stats.st_mtime)).strftime('%d-%m-%Y')
+                "creation_date": datetime.utcfromtimestamp(int(admin_post_file_name_stats.st_mtime)).strftime('%d-%m-%Y'),
+                "creation_time": datetime.utcfromtimestamp(int(admin_post_file_name_stats.st_mtime)).strftime('%H:%M:%S')
             }
         )
 
-    return render_template("index.html", admin_posts_list=admin_posts_list)
+    anon_posts_list = []
+    anon_posts_file_list = os.listdir(ANON_PASTES)
+    for anon_post_file_name in anon_posts_file_list:
+        anon_post_file_name_path = os.path.join(
+            ANON_PASTES, anon_post_file_name)
+        anon_post_file_name_stats = os.stat(anon_post_file_name_path)
+        anon_posts_list.append(
+            {
+                "name": anon_post_file_name,
+                "size": bytes2KB(anon_post_file_name_stats.st_size),
+                "creation_date": datetime.utcfromtimestamp(int(anon_post_file_name_stats.st_mtime)).strftime('%d-%m-%Y'),
+                "creation_time": datetime.utcfromtimestamp(int(anon_post_file_name_stats.st_mtime)).strftime('%H:%M:%S')
+            }
+        )
+
+    return render_template("index.html", admin_posts_list=admin_posts_list, anon_posts_list=anon_posts_list)
 
 
 @app.route("/")

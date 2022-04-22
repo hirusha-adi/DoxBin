@@ -346,16 +346,17 @@
                             </a>
                         </td>
                         <td style="width: 105px;" class="text-center">
-                            0
+                            Anonymous
                         </td>
                         <td class="text-center">
-                            28
+                            {{ anon_post.creation_date }}
                         </td>
                         <td colspan="2" style="padding-bottom: 0; max-width: 140px;" class="text-center">
-                            <a class="dox-username" title="JamesMcCarty" style="color: #2a9fd6;"
-                                href="/user/JamesMcCarty">JamesMcCarty </a>
+                            {{ anon_post.creation_time }}
                         </td>
-                        <td style="width: 120px" class="text-center r-hide">Apr 22nd, 2022</td>
+                        <td style="width: 120px" class="text-center r-hide">
+                            {{ anon_post.size }} KB
+                        </td>
                     </tr>
                     {% endfor %}
 

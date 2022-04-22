@@ -1,0 +1,118 @@
+.admin-text{
+    color: red;
+    font-weight: bold;
+}
+
+
+/* paste icon pinned, password protected, private, unlisted */
+.paste-icon{
+    font-size:19px;
+    vertical-align:middle;
+    margin-right:3px;
+    text-decoration: none;
+}
+div.paste-properties{
+    text-align: right;
+}
+div.paste-properties span i.material-icons{
+    font-size: 17px;
+    display: inline;
+    padding-right: 3px;
+    vertical-align:middle;
+}
+div.paste-properties span span{
+    display: inline-block;
+    padding-top: 2px;
+}
+div.paste-properties span{
+    color: rgb(214, 52, 52);
+}
+
+
+
+.uinfo a{
+    display: block;
+}
+.uinfo a:hover{
+    background-color: #2d2d2d;
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* Paste highlight colours */
+.table-hover>tbody>tr.rich-post{
+    background-color: #3e3704;
+}
+.table-hover>tbody>tr.rich-post:hover{
+    background-color: #312c04;
+}
+.table-hover>tbody>tr.clique-post{
+    background-color: #09092f;
+}
+.table-hover>tbody>tr.clique-post:hover{
+    background-color: #080827;
+}
+.table-hover>tbody>tr.council-post{
+    background-color: rgb(17, 49, 70);
+}
+.table-hover>tbody>tr.council-post:hover{
+    background-color: rgb(11, 36, 51);
+}
+table.table tbody tr.hidden-post{
+    background-color: #421414 !important;
+}
+table.table tbody tr.hidden-post:hover{
+    background-color: #381111 !important;
+}
+
+/* Buttons */
+a.button{
+    display: inline-block;
+    padding: 5px 8px;
+    background-color: #232323;
+    color: white;
+    border-radius: 2px;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+    width: auto;
+}
+a.button:focus{
+    text-decoration: none;
+}
+a.button:hover{
+    background-color: #2e2e2e;
+    text-decoration:none;
+}
+a.button.button-red{
+    border: solid 1px #ff0000;
+}
+a.button.button-green{
+    border: solid 1px #00ff00;
+}
+a.button.button-blue{
+    border: solid 1px #0000ff;
+}
+
+/* Show Paste */
+body.bin > .btn{
+    line-height: 1.2;
+    color: white;
+    background: #b21c1c;
+    border: 0;
+    border-radius: 2px;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    outline: none;
+    padding: 5px 5px 3px 5px;
+    vertical-align: top;
+    /* margin-top: 8px; */
+}
+body.bin .admin-options li a{
+    background-color: #753b3b;
+}
+body.bin .admin-options li a:hover{
+    background-color: #4d2727;
+}

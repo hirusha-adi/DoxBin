@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Doxbin-FOSS</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='legacy/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='legacy/css/main.css') }}">
+    <link href="{{ url_for('static', filename='legacy/dropdown.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='files/doxbin.css') }}" rel="stylesheet">
+
+    <link href="{{ url_for('static', filename='others/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='others/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='others/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='others/bootstrap-responsive.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='others/bootstrap-responsive.min.css') }}" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Doxbin-FOSS is a document sharing and publishing website for text-based information such as dox, code-snippets and other stuff.">
+
+    <style>
+        body,
+        p {
+            background-color: #060606;
+            color: white;
+        }
+
+        td,
+        tr,
+        tbody {
+            background-color: #060606;
+            color: white;
+        }
+
+        /* Custom CSS to fix messed up table colors */
+        .table>tfoot>tr>th,
+        .table>tfoot>tr>td {
+            border-top-color: rgb(108, 100, 88);
+        }
+
+        .table-striped tbody>tr:nth-child(2n+1)>td,
+        .table-striped tbody>tr:nth-child(2n+1)>th {
+            background-color: rgb(23, 25, 26);
+        }
+
+        .table-striped tbody>tr:nth-child(2n)>td,
+        .table-striped tbody>tr:nth-child(2n)>th {
+            background-color: #0f0f0f;
+        }
+
+        .table>tfoot>tr>th,
+        .table>tfoot>tr>td {
+            line-height: 1.42857;
+            vertical-align: top;
+            padding: 8px;
+            border-top: 1px solid rgb(40, 40, 40);
+        }
+
+        /* Dark Mode Scrollbar */
+        ::-webkit-scrollbar {
+            background-color: #1b1e1f;
+            color: #918b82;
+        }
+
+        ::-webkit-scrollbar-corner {
+            background-color: #141617;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #3b3f41;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+
+                <a class="navbar-brand" href="{{ url_for('all_links') }}">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+
+                        All Pages
+
+                    </button>
+                </a>
+                <a class="navbar-brand" href="{{ url_for('index') }}">
+                    Doxbin
+                </a>
+            </div>
+
+            <div id="navbar" class="collapse navbar-collapse navbar-header">
+
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="https://doxbin.org/upload">Add Paste</a></li>
+                    <li><a href="https://doxbin.org/users">Users</a></li>
+                    <li><a href="https://doxbin.org/upgrade">Upgrades<p class="notif_count"
+                                style="display: none;margin-top: 4px; left:65px;height: 8px;top:8px;"></p></a></li>
+                    <li><a href="https://doxbin.org/hoa">Hall of Autism</a></li>
+                    <li><a href="https://doxbin.org/tos">TOS</a></li>
+                    <li><a target="_blank" rel="nofollow" href="https://t.me/doxbin">Telegram</a></li>
+                </ul>
+
+                <div class="sidebar-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Register</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="col-md-12">
+        <div class="col-md-12" style="margin-top: 60px;float:none;">
+            <div align="center">
+
+                <pre
+                    style="font: 4px/6px monospace; background-color: #060606; overflow-x: hidden; overflow-y: hidden; border: none; color: white;">
+                                                                           @                                                     
+                                                                         . @ .                                                     
+                                                                  @%,   % @ @.&    &%                                                 
+                                                                 ..@  @@ %   &.@%  &.,                                                                
+                                                      ( @       .% &     ,, ./    .# @/       & .                                          
+                                                    ..&*.@     #(@(    /   @   .     @@@     @.(@,.                                          
+                                           /.    #*   /  @ && (%@#. (@    @ @..  %# .@@&& #& (  %   .* .  /%                                    
+                                          @  @  #( ,. *,, @%@  & # #,   .&&*&@*    @ * %  @(* #%. .  &@  @  @                                         
+                                        / %%.(/#* @   / % # @# /@  *&  &/*&&% ,&. %(  @@ *& @ @ #   & .%/#.@@ ,                                      
+                                        @ *& /,.(.@%(&  &   ./@ @ /%  %.. & & * %  %# @ @%%   %  @(%& #.,* @#.%*                                      
+                                     %@@ %,#& %&.@ @&@/# @  #/,%,*,#%(@(  @ @  @@(#&(@,%./@  @ @%&// ,%&( &% @  &,                                    
+                                 @  ## %  (@/% /,.@*#@ ( % &%#.## %,#%.@  @ #  @ %(*/ * @&/# (#  ,& &@/%.&% ( &  @  /.                                
+                               *  /  (.#  .      .@,@ , @%, &@.@@ #@/@ ./     #  @(@*,@@ @% #.( /%,@..      .  */@  &@ @                              
+                               ,,@,@    *    & /  / %@.&@( @@ // /@%     @   @     &&% @& @. &   .& . ,  .   ,     , ,/                               
+                             */@* @,       &(@&.  #@     @@ @/@@@     @    @    @     @@@,@ @%@@@  @,  .@(@#   /   &, @@#                             
+                             .&(#.  ./@&  @@.#&##@ @ @ @  &  /@ %   @ * % # @ @ * &   @.@. %@  # @.@.@##&/*%%  @@// .*. (                             
+                    #   &      %% (/%@@@@ @%#  && .&.@ &#@@.@ @    /@ #@%@, .(/@, @*  ,*@ @ &&*( @ @. &&  %@@ &@@@ ,, %&      @  (                    
+                   *%(&#@& /%% @ /, ,&(%,& @@  &(,/   . ( *&@#(&/ @,# #@       @* /(@ *&/ @&*,&*, . &,(&  && @((&@%*@  / @@  /%,(%(                   
+                 @@  ,,@ & (@@ %@* @@@ @(@,  /     @ @&@ @/  @&     /  ( (, .@ ,. .     &@  .@*@@& &     ,  .@(@ @&@  @*  ,@   .*  ...                
+          @(#     *( # &   ,% @/  # @& @.  @ @%#(&  #,     .& #* #   *(@@ @.@ @@//   &  / @* .  / &  @(#%@ @  .@ @@ @  **./ #  / #  @@,   @*&         
+        @, @@ &# @% #   .@   ..#%&.    @@/. @%,#@ @@  *, (@@.@, #& @#@.&&@* #%(@/@%@ @, .@.@#@ ( / @@ @#(@@ .(@@     &  *.,  @ . *  & , % ,. &        
+         (.(&/(*%* &  %&%. ,* @ /.@ /.(   (#&#/.&  @ % @@ #  / @ @%%(//((@@&@@#(//#%&@ @ /. & %@ / @  @.*#%#(   * ,*&(#  (@  /@@/    @//@  @/         
+         @ (@ #   @ @@*@@ @ # @ *  ,/@ @  @   &,(..@ . @@.  &@,.,@@&@@@@&&@@@@@@&&@@@@/  &&...%@ ..#  #.&  .(  @ @    @#. @  #@& *@,    @ #@ /        
+             /@@@@.  %. * @  #//@(/( *@  *  % //.. &.@ .(( .&@@@@&&@@@@@@&@&@@&@&@@@@&@@&@@  /(  %.&.,.*( @  /  @ ./((@** @  #  /*  *@&@@.            
+          *@@            @   @  & (&%( ( @@@/(&#.&  .%&.,&&@@@@&&&&@@(.(@(  ,(&(.#@&@&@@&@@&@@. @*. ,% @@((@@@ & (%&% @   @   &       @@ *@@          
+              .&    @  @&((./  #, @@(&@@@@%**  ,...*/  @@&&@@&@@@&@&@...  @ @.   .@&@&@@&@@&@@@@ .//.   . ,/#@@@@&(@@ @. ,,*((,%  *%, &*              
+              @#%,@& @,/@,*   (.@  @,        @&,,,@ .@@@@%#..  *@/ ..  ..%,//@   ..  *@( .. @&@@@@. @%  @@        #&  @@(  & @@ #  @@ #%@             
+            @ *.(%((%@//#*/@% @       ,,@  /* #*@&  @@@@@.(.(&@ .  ..  ..&(%#@   ..   ..&#% , @@@@@  @@ ( //  % /    @  * ,.*(# @@(((&/.* ,           
+               @@@@     &@*% (@ &##   /@ @ @/@*/@..@@&/.. @&@...    ..@.  * #.  @ .....   @@@.  *@@&  @&#@*% # @,   @@  & @@&@/     %@@(              
+                . .  @@// .@(@@ / @(   @%* (@%... @%@#@   ,(((*         @*@ @,@         /(((,   @&@@@    %@, ((@   *& % % @@, /(.(  @@*&              
+                ,     *,@ *.   @         /.@   @  @  /@.       . @@@@,   @ @ @   .@@@@ .       .@#  @  @. /@ %         @ *  / @  @   .                
+                 @@   /%(./   &  @. .&   @(  % @ .&       ##/,.*(#  .@@@#     /@@@*  #(*,,/##       (( # (  *@   @, .@  &   *,@@    ..                
+               * @&&.   , @% @ @. (         ,  .  ( #@&@@@@@@@@#&@@@ ,        ,  . @@@@@/&@@@&@@@@% ,(    (    .,   @/,% *( @ (  (*@,, @              
+         (*#&, @*   #(/&,.@.% @**      @@ @ @@( @ &    ./@@ @ &@/ #  @           @, * (@% & @@#,    #/@ @@& @ @@   @& @&@ (*@ %#(%*  / / (%# %        
+           @ @   @ .(    @@&@ @@@    /&  / , & @  @  .    @*@@@@@@@#  . *     . ,  (@@@@@@@(@  . .  @  & & *   .&#@ @  ,*,&&      &@.&   .  /,        
+            @           *###@ @/#   /#&/(#,&@@..% @                                                 & &..@@&*(#/&((   /#,  @@(/         @             
+             *@./ @    @ &  %(/   & %  #@    @  @.@.                                                @ @  @    @,  @ %   .@@  & @    * @(*@            
+                     @  &#%/,@   ..@( (  .,(#   @. @                            @       .&         @ *@   %&.   % &&  .  @**&#%  &                    
+              .@@.  %  @.,& @@  @   #((@   .   @% #*                   &@     @@.          @       #@ *@.  .   @,*&  *@  @# &/.#  @  #&%              
+              @.,* @#  @&(  @&  # @  , *(*@@@, @@ /@&                 @ &,    & &           #     @@@ @@ ,&@@%&, ,  & @  @@ .& .  @, *.(/             
+               *  ,&@.  *&    /, @  @ ,   ,. ,@ @ ,.#@                     % ,              .    @. * @ @,  ,   / @  @ .@ .   @  @%@ .%               
+                ,,& .*@  @  &%**%(.%   *&,  %@ & @  % /           @*%%,    (. ..,#%.@     ,     # *  @ @ #(  .@* . #,/%*/&/  * .,@   /                
+                   %%    @ ,@,   . .#&%@(,..**@# , @@   @            . #   @   * %(.  .%%     @   @@@@.*@/#..,(@%@*  % * *& ,%    &                   
+                                       @@/, /%/&( ,  @    %           .%   @   #,   @ ,     #    @  .%*&*( .&  ,                                      
+                                         .&& @@,. @ @  #(*  &           @  @  @           #   &*  @ @  *(*#@%                                        
+                                           , @# &%(&*%& @@    //        @  @  @        *(    @@ &%#&,%& @@%@                                         
+                                               %##@&@%#@          %,    @  %  %    .%          @%%@@@#%/                                           
+                                                @ @   (,               *@     ((                    @ #.                                              
+                                                  *@                    @     @                    &(                                         
+                                                                         #   /                     /                                                  
+                                                                           #                                                             
+                </pre>
+
+                <h5 class="announcement a-1" style="color:#00AAFF;">
+                    <u>
+                        <a style="color:inherit;" href="{{ url_for('index') }}">
+                            Doxbin
+                        </a>
+                    </u>
+                </h5>
+
+                <h5 class="announcement a-2" style="color:#08EFFF;">
+                    <u>
+                        <a style="color:inherit;" href="https://github.com/hirusha-adi/DoxBin">
+                            Free and Open Source Rebuild
+                        </a>
+                    </u>
+                </h5>
+
+                <!-- 
+                <h5 class="announcement a-2" style="color:#00AAFF;">
+                    <u>
+                        <a style="color:inherit;" href="https://doxbin.org">
+                            Mirror: Doxbin.org
+                        </a>
+                    </u>
+                </h5>
+                -->
+
+                <label for="search-form">Search for a paste</label>
+
+                <form id="search-form" method="POST" action="search">
+                    <input name="search-query" type="text" placeholder="Search for...">
+                    <input type="submit" value="Search">
+                </form>
+
+                <br>
+
+                <p>Showing 150 (of 61300 total) pastes</p>
+
+                <div class="center">
+                    <div class="pagination">
+                        <a style="border-top-left-radius:3px;border-bottom-left-radius:3px;"
+                            class="disabled">&laquo;</a>
+                        <a class="active">1</a>
+                        <a href="/?page=2">2</a>
+                        <a href="/?page=3">3</a>
+                        <a href="/?page=4">4</a>
+                        <a href="/?page=5">5</a>
+                        <p>...</p>
+                        <a href="/?page=409">409</a>
+                        <a style="border-top-right-radius:3px;border-bottom-right-radius:3px;"
+                            href="/?page=2">&raquo;</a>
+                    </div><br>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-7" style="float:none;margin:auto;padding:0;">
+            <!-- PINNED PASTES -->
+            <h6 style="margin-top: 14px; color: white;">Pinned Pastes</h6>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th colspan="3">Title</th>
+                        <th class="text-center auto-size">Comments</th>
+                        <th class="text-center">Size</th>
+                        <th colspan="2" class="text-center">Created by</th>
+                        <th style="width: 120px" class="text-center r-hide">Added</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for admin_post in admin_posts_list %}
+
+                    <tr class="doxentry">
+                        <td colspan="3" style="overflow: hidden; text-overflow: ellipsis;">
+                            <a title="zalgo poor retard" href="https://doxbin.org/upload/zalgopoorretard">
+                                {{ admin_post.name }}
+                            </a>
+                        </td>
+                        <td style="width: 105px;" class="text-center">{{ admin_post.size }} KB</td>
+                        <td class="text-center">392</td>
+                        <td colspan="2" style="padding-bottom: 0; max-width: 140px;" class="text-center">
+                            <a class="dox-username" title="bladee98" style="color: #365DDA;"
+                                href="/user/bladee98">bladee98 </a>
+                        </td>
+                        <td style="width: 120px" class="text-center r-hide">{{ admin_post.creation }}</td>
+                    </tr>
+
+                    {% endfor %}
+
+                    <tr class="doxentry  mod-post">
+                        <td colspan="3" style="overflow: hidden; text-overflow: ellipsis;"><a
+                                title="How to Ensure Your Paste Stays Up"
+                                href="https://doxbin.org/upload/HowtoEnsureYourDoxStaysUp">How to Ensure Your Paste
+                                Stays Up</a></td>
+                        <td style="width: 105px;" class="text-center">-</td>
+                        <td class="text-center">43917</td>
+                        <td colspan="2" style="padding-bottom: 0; max-width: 140px;" class="text-center">
+                            <a class="dox-username" title="charge" style="color: #3EF973; font-weight: bold;"
+                                href="/user/charge">charge <span
+                                    style="color:#3EF973;font-weight:bold;">[Mod]</span></a>
+                        </td>
+                        <td style="width: 120px" class="text-center r-hide">Nov 20th, 2020</td>
+                    </tr>
+
+                    <tr class="doxentry  mod-post">
+                        <td colspan="3" style="overflow: hidden; text-overflow: ellipsis;"><a
+                                title="How to Ensure Your Paste Stays Up"
+                                href="https://doxbin.org/upload/HowtoEnsureYourDoxStaysUp">How to Ensure Your Paste
+                                Stays Up</a></td>
+                        <td style="width: 105px;" class="text-center">-</td>
+                        <td class="text-center">43917</td>
+                        <td colspan="2" style="padding-bottom: 0; max-width: 140px;" class="text-center">
+                            <a class="dox-username" title="charge" style="color: #3EF973; font-weight: bold;"
+                                href="/user/charge">charge <span
+                                    style="color:#3EF973;font-weight:bold;">[Mod]</span></a>
+                        </td>
+                        <td style="width: 120px" class="text-center r-hide">Nov 20th, 2020</td>
+                    </tr>
+
+                    <tr class="doxentry  admin-post">
+                        <td colspan="3" style="overflow: hidden; text-overflow: ellipsis;"><a
+                                title="Transparency Report"
+                                href="https://doxbin.org/upload/DoxbinTransparencyReport">Transparency Report</a></td>
+                        <td style="width: 105px;" class="text-center">-</td>
+                        <td class="text-center">61359</td>
+                        <td colspan="2" style="padding-bottom: 0; max-width: 140px;" class="text-center">
+                            <a class="dox-username" title="kt" style="color: red; font-weight: bold;" href="/user/kt">kt
+                                <span style="color:red;font-weight:bold;">[Admin]</span></a>
+                        </td>
+                        <td style="width: 120px" class="text-center r-hide">Jun 20th, 2020</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <!-- normal pastes -->
+            <table class="table table-striped table-hover" style="margin-top: 0px;">
+                <thead>
+                    <tr>
+                        <th colspan="3">Title</th>
+                        <th class="clickable text-center auto-size" id="commentsorder" style="width: 105px;">Comments
+                        </th>
+                        <th class="clickable text-center auto-size" id="viewsorder">Views </th>
+                        <th colspan="2" class="text-center">Created by</th>
+                        <th class="clickable text-center r-hide" id="dateorder" style="width: 120px">Added </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr data-test="" class="doxentry" id="141314">
+                        <td colspan="3" style="overflow: hidden;text-overflow: ellipsis;">
+                            <a title="UPDATED" href="https://doxbin.org/upload/UPDATED"> UPDATED</a>
+                        </td>
+                        <td style="width: 105px;" class="text-center">
+                            0
+                        </td>
+                        <td class="text-center">
+                            2
+                        </td>
+                        <td colspan="2" style="padding-bottom: 0; max-width: 140px;" class="text-center">
+
+                            <a class="dox-username" title="DoxedWWW" style="color: #2a9fd6;"
+                                href="/user/DoxedWWW">DoxedWWW </a>
+                        </td>
+                        <td style="width: 120px" class="text-center r-hide">Apr 22nd, 2022</td>
+                    </tr>
+
+                    <tr data-test="" class="doxentry" id="141313">
+                        <td colspan="3" style="overflow: hidden;text-overflow: ellipsis;">
+                            <a title="RE UPLOAD lethal 0001 aka catboybailey"
+                                href="https://doxbin.org/upload/REUPLOADlethal0001akacatboybailey"> RE UPLOAD lethal
+                                0001 aka catboybailey</a>
+                        </td>
+                        <td style="width: 105px;" class="text-center">
+                            0
+                        </td>
+                        <td class="text-center">
+                            28
+                        </td>
+                        <td colspan="2" style="padding-bottom: 0; max-width: 140px;" class="text-center">
+                            <a class="dox-username" title="JamesMcCarty" style="color: #2a9fd6;"
+                                href="/user/JamesMcCarty">JamesMcCarty </a>
+                        </td>
+                        <td style="width: 120px" class="text-center r-hide">Apr 22nd, 2022</td>
+                    </tr>
+
+
+                    <tr data-test="" class="doxentry  " id="141312">
+                        <td colspan="3" style="overflow: hidden;text-overflow: ellipsis;">
+                            <a title="Dox SpreemDCM" href="https://doxbin.org/upload/DoxSpreemDCM"> Dox SpreemDCM</a>
+                        </td>
+                        <td style="width: 105px;" class="text-center">
+                            0
+                        </td>
+                        <td class="text-center">
+                            24
+                        </td>
+                        <td colspan="2" style="padding-bottom: 0; max-width: 140px;" class="text-center">
+
+                            <a class="dox-username" title="Zauxia" style="color: #2a9fd6;" href="/user/Zauxia">Zauxia
+                            </a>
+                        </td>
+                        <td style="width: 120px" class="text-center r-hide">Apr 22nd, 2022</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="center">
+        <div class="pagination">
+            <a style="border-top-left-radius:3px;border-bottom-left-radius:3px;" class="disabled">&laquo;</a>
+            <a class="active">1</a>
+            <a href="/?page=2">2</a>
+            <a href="/?page=3">3</a>
+            <a href="/?page=4">4</a>
+            <a href="/?page=5">5</a>
+            <p>...</p>
+            <a href="/?page=409">409</a>
+            <a style="border-top-right-radius:3px;border-bottom-right-radius:3px;" href="/?page=2">&raquo;</a>
+        </div><br>
+        <p>Showing 150 (of 61300 total) pastes</p>
+        <br>
+        <a href="#">Back to top</a>
+        <br><br>
+    </div>
+
+</body>
+
+</html>
+<!-- made by t.me/brenton brenton@doxbin.org  -->

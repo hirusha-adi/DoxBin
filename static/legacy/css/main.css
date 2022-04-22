@@ -1,0 +1,162 @@
+input[type=text], select, option{
+    line-height: 1.2;
+    color: white;
+    background: #282828;
+    border: 0;
+    border-radius: 2px;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    outline: none;
+    padding: 7px 5px;
+    width: 200px;
+}
+
+.order{
+    margin-bottom: 0px;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+}
+
+input[type=text]::placeholder{
+    color: rgb(167, 167, 167);
+}
+input[type=submit]{
+    line-height: 1.2;
+    color: white;
+    background: #282828;
+    border: 0;
+    border-radius: 2px;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    outline: none;
+    padding: 7px 5px;
+}
+input, select, option{
+    font-size: 100%;
+}
+
+input[type=submit]:hover{
+    color: white;
+    background: #3d3d3d;
+    text-decoration: none;
+}
+.center {
+  text-align: center;
+}
+
+.pagination {
+  display: inline-block;
+  margin: 0;
+}
+
+.pagination a, .pagination p {
+    color: white;
+    float: left;
+    min-width: 30px;
+    min-height: 30px;
+    padding-top: 5px;
+    
+    text-decoration: none;
+    transition: background-color .3s;
+    border: solid 1px #878787;
+    border-left: none;
+    margin: 0 0px 1px;
+}
+.pagination a:first-of-type{
+    border-left: solid 1px #878787;
+}
+
+.pagination a.active {
+    background-color: #4c4c4c;
+    color: #e5e5e5;
+}
+.pagination a:hover:not(.active):not(.disabled) {
+    background-color: #383838;
+}
+
+.pagination .disabled, .pagination .active{
+    cursor: not-allowed;
+}
+.admin-text{
+    color: red;
+    font-weight: bold;
+}
+.dox-username{
+    display: inline-block;
+    max-width: 125px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+table{
+    table-layout: fixed;
+}
+.clickable{
+    cursor: pointer;
+}
+
+/* ranks */
+
+/* admin */
+table.table tbody tr.admin-post{
+    background-color: #3d0606;
+}
+table.table tbody tr.admin-post:hover{
+    background-color: #300505;
+}
+
+/* mod */
+table.table tbody tr.mod-post{
+    background-color: #0c3b1a;
+}
+table.table tbody tr.mod-post:hover{
+    background-color: #0a3317;
+}
+
+/* criminal */
+table.table tbody tr.criminal-post{
+    background-color: #2b0c1e;
+}
+table.table tbody tr.criminal-post:hover{
+    background-color: #240a19;
+}
+
+/* vip */
+table.table tbody tr.vip-post{
+    background-color: #381a35;
+}
+table.table tbody tr.vip-post:hover{
+    background-color: #30172d;
+}
+.announcement.a-1{
+    font-size: 23px;
+}
+.announcement.a-2{
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+@media screen and (max-width:500px){
+    body{
+        font-size: 10px;
+    }
+    .col-md-12{
+        padding: 0;
+        width: 100%;
+    }
+    .col-md-7{
+        padding: 0;
+        width: 100%;
+    }
+    .pagination a, .pagination p{
+        min-width: 25px;
+        min-height: 25px;
+    }
+    .announcement.a-1{
+        font-size: 17px;
+    }
+    .announcement.a-2{
+        font-size: 14px;
+    }
+    
+}

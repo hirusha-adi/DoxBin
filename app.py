@@ -98,5 +98,10 @@ def new_paste_form_post():
     return redirect(url_for('index'))
 
 
+@app.route("/post")
+def post():
+    return render_template("post.html")
+
+
 if __name__ == "__main__":
     app.run("0.0.0.0", port=8080, debug=False)

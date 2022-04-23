@@ -203,19 +203,28 @@
 
                 <div class="options" id="btns">
                     <ul>
+                        <li><a href="{{ url_for('new_paste') }}" class="btn new">Download</a></li>
+                    </ul>
+                </div>
+
+                <div class="options" id="btns">
+                    <ul>
                         <li><a href="{{ url_for('new_paste') }}" class="btn new">New</a></li>
-                        <li><a href="/tos" class="btn new">New</a></li>
+                        <li><a href="{{ url_for('tos') }}" class="btn new">Terms of Service</a></li>
 
                     </ul>
                 </div>
 
                 <div class="options" id="cmntsctn">
-
                 </div>
+
                 <div class="options r-hide" id="tos-display">
-                    <p style="margin-top: 0;color: white;">Please note that all posted information is publicly available
-                        and must follow our <a href="https://doxbin.org/tos"
-                            style="text-decoration: underline;">TOS.</a></p>
+                    <p style="margin-top: 0;color: white;">
+                        Please note that all posted information is publicly available and must follow our
+                        <a href="{{ url_for('tos') }}" style="text-decoration: underline;">
+                            TOS.
+                        </a>
+                    </p>
                 </div>
 
             </div>

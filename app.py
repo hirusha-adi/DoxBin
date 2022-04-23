@@ -103,5 +103,10 @@ def post():
     return render_template("post.html")
 
 
+@app.route("/tos")
+def tos():
+    return "TOS"
+
+
 if __name__ == "__main__":
     app.run("0.0.0.0", port=8080, debug=False)

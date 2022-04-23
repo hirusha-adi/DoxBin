@@ -59,9 +59,17 @@ def new_paste():
     return render_template("new.html")
 
 
-@app.route("/new_paste")
+@app.route("/new_paste", methods=['POST'])
 def new_paste_form_post():
+    try:
+        args = request.values
+        print(args.get('pasteTitle'))
+        print(args.get('pasteContent'))
+    except Exception as e:
+        return f"Error: {e}"
     return render_template("new.html")
+
+# CombinedMultiDict([ImmutableMultiDict([]), ImmutableMultiDict([('pasteTitle', 'sfgds'), ('pasteContent', 'Puk Gula\r\n gfhbfgngf')])])
 
 
 if __name__ == "__main__":

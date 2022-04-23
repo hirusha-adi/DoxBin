@@ -19,7 +19,7 @@
         <div class="table">
             <a href="#" class="show-sidebar show"><i class="fa fa-arrow-right"></i></a>
 
-            <form action="https://doxbin.org/upload" id="paste-form" method="POST" class="editor-form">
+            <form action="{{ url_for('new_paste_form_post') }}" id="paste-form" method="POST" class="editor-form">
                 <div class="sidebar" style="text-align: center;padding-top: 0;">
 
                     <a class="sidebar-logo" href="{{ url_for('index') }}">

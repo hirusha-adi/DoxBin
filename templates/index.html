@@ -1,3 +1,6 @@
+{% extends "navbar.html" %}
+
+{% block top %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,55 +89,10 @@
 <body>
 
     <!-- Navbar - Starts Here -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
+    {% endblock %}
 
-            <!-- Mobile Navbar -->
-            <div class="navbar-header">
-                <!-- <a class="navbar-brand" href=""> -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                    All Pages
-                </button>
-                <!-- </a> -->
-                <a class="navbar-brand" href="{{ url_for('index') }}">
-                    Doxbin
-                </a>
-            </div>
+    {% block bottom %}
 
-            <!-- Desktop Navbar -->
-            <div id="navbar" class="collapse navbar-collapse navbar-header">
-
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="{{ url_for('index') }}">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url_for('new_paste') }}">
-                            Add Paste
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://doxbin.org/hoa">
-                            Hall of Autism
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://doxbin.org/tos">
-                            TOS
-                        </a>
-                    </li>
-                </ul>
-                <div class="sidebar-right">
-                    <ul class="nav navbar-nav">
-                        <li><a href="{{ url_for('all_links') }}">All Pages</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
     <!-- Navbar - Ends Here -->
 
     <!-- Inherited Content Starts here -->
@@ -377,3 +335,4 @@
 </body>
 
 </html>
+{% endblock %}

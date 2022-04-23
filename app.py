@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect
 import os
 import sys
+import json
 from datetime import datetime
 
 app = Flask(__name__)
@@ -14,6 +15,18 @@ with open(os.path.join(DATA, "template"), "r", encoding="utf-8") as temp_file:
 
 admin_posts_list = []
 anon_posts_list = []
+loosers_list = []
+
+
+def refreshLoosers():
+    global loosers_list
+    with open(os.path.join(DATA, "hol.json"), "r", encoding="utf-8") as file:
+        data = json.load(file)
+
+    if not(len(loosers_list) == len(data["loosers"])):
+        for looser in data["loosers"]:
+            if isinstance(looser, dict):
+                loosers_list.append(looser)
 
 
 def refreshAdminPosts():
@@ -117,8 +130,8 @@ def tos():
     return "TOS"
 
 
-@app.route("/hoa")
-def hall_of_autism():
+@app.route("/hol")
+def hall_of_loosers():
     return render_template("hol.html")
 
 

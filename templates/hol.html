@@ -1,15 +1,18 @@
+{% extends "navbar.html" %}
+
+{% block top %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doxbin - Hall of Autism</title>
+    <title>Doxbin - Hall of Loosers</title>
     <meta name="description"
         content="Here lies the bullied, antisocial & doxed rejects who stepped into the wrong side of the internet.">
 
     <meta property="og:locale" content="en_US">
-    <meta property="og:url" content="https://doxbin.org/hoa">
+    <meta property="og:url" content="{{ url_for('hall_of_loosers') }}">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Doxbin - Hall of Autism">
     <meta property="og:description"
@@ -493,39 +496,9 @@
 
 <body>
     <iframe src="/files/hoa/audio.mp3" allow="autoplay" style="display:none"></iframe>
-    <input type="hidden" name="_token" value="fdBjRLqlRc9SO8pwPL9OVSODFx76bY8OS3Nz2MTc">
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="https://doxbin.org/">Doxbin</a>
-            </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="https://doxbin.org">Home</a></li>
-                    <li><a href="https://doxbin.org/upload">Add Paste</a></li>
-                    <li><a href="https://doxbin.org/users">Users</a></li>
-                    <li><a href="https://doxbin.org/upgrade">Upgrades<p class="notif_count"
-                                style="display: none;margin-top: 4px; left:65px;height: 8px;top:8px;"></p></a></li>
-                    <li class="active"><a href="https://doxbin.org/hoa">Hall of Autism</a></li>
-                    <li><a href="https://doxbin.org/tos">TOS</a></li>
-                    <li><a target="_blank" rel="nofollow" href="https://t.me/doxbin">Telegram</a></li>
-                </ul>
-                <div class="sidebar-right">
-                    <ul class="nav navbar-nav">
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/register">Register</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
+    {% endblock %}
+
+    {% block bottom %}
     <div class="col-md-12" style="margin-top: 60px;">
         <div class="center">
             <pre class="doxbin-text">
@@ -560,3 +533,4 @@
 </body>
 
 </html>
+{% endblock %}

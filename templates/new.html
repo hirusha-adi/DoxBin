@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>Doxbin - Create new paste</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='legacy/app.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='files/doxbin.css') }}">
+
+</head>
+
+<body class="bin">
+    <div class="wrapper">
+        <div class="table">
+            <a href="#" class="show-sidebar show"><i class="fa fa-arrow-right"></i></a>
+
+            <form action="https://doxbin.org/upload" id="paste-form" method="POST" class="editor-form">
+                <div class="sidebar" style="text-align: center;padding-top: 0;">
+
+                    <a class="sidebar-logo" href="{{ url_for('index') }}">
+                        <pre>
+  ____            _     _       
+ |  _ \  _____  _| |__ (_)_ __  
+ | | | |/ _ \ \/ / '_ \| | '_ \ 
+ | |_| | (_) &gt;  &lt;| |_) | | | | |
+ |____/ \___/_/\_\_.__/|_|_| |_|
+                        </pre>
+                    </a>
+
+                    <div class="options">
+
+                        <p style="color:red;text-align: center;font-size:15px;">
+                            <b>
+                                READ TOS BEFORE POSTING.
+                            </b>
+                            <br>
+                            Any post that violates our TOS will be removed.
+                        </p>
+
+                        <h3>Title:</h3>
+
+                        <input type="text" name="pasteTitle" id="paste-title" maxlength="70" value="">
+
+                    </div>
+
+                    <div class="options">
+                        <ul>
+                            <li>
+                                <input type="submit" id="create-paste" value="Create" class="button">
+                            </li>
+                            <li>
+                                <input type="reset" value="Clear" class="button">
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p>
+                        Please note that all posted information is publicly available and must follow our
+                        <a href="https://doxbin.org/tos" style="text-decoration: underline;">
+                            TOS.
+                        </a>
+                    </p>
+                </div>
+
+                <div class="editor-container">
+                    <textarea name="pasteContent" id="paste-content" class="editor mousetrap" wrap="off">
+                        Puk Gula
+                    </textarea>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

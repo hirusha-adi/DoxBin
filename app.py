@@ -1,8 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import os
 import sys
 from datetime import datetime
-ts = int('1284101485')
 
 print()
 app = Flask(__name__)
@@ -50,9 +49,19 @@ def index():
     return render_template("index.html", admin_posts_list=admin_posts_list, anon_posts_list=anon_posts_list)
 
 
-@app.route("/")
+@app.route("/pages")
 def all_links():
     return "All Links"
+
+
+@app.route("/new")
+def new_paste():
+    return render_template("new.html")
+
+
+@app.route("/new_paste")
+def new_paste_form_post():
+    return render_template("new.html")
 
 
 if __name__ == "__main__":

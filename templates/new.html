@@ -16,10 +16,11 @@
 <body class="bin">
     <div class="wrapper">
         <div class="table">
-            <a href="#" class="show-sidebar show"><i class="fa fa-arrow-right"></i></a>
+            <a href="#" class="show-sidebar show" onclick="showHideSideBar()"><i class="fa fa-arrow-right"
+                    onclick="showHideSideBar()"></i></a>
 
             <form action="{{ url_for('new_paste_form_post') }}" id="paste-form" method="POST" class="editor-form">
-                <div class="sidebar" style="text-align: center;padding-top: 0;">
+                <div id="showhide-sidebar" class="sidebar" style="text-align: center;padding-top: 0;">
 
                     <a class="sidebar-logo" href="{{ url_for('index') }}">
                         <pre>
@@ -68,13 +69,24 @@
 
                 <div class="editor-container">
                     <textarea name="pasteContent" id="paste-content" class="editor mousetrap"
-                        wrap="off">{{ _DEFAULT_POST_TEMPLATE }}</textarea>
+                        wrap="off">{{ paste_template_text }}</textarea>
                 </div>
 
             </form>
 
         </div>
     </div>
+
+    <script>
+        function showHideSideBar() {
+            var x = document.getElementById("showhide-sidebar");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 

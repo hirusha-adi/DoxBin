@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Doxbin - Desmond Singh</title>
+    <meta name="description" content="Desmond Singh - Paste created by MKV on Nov 17th, 2020">
+
+
+    <link rel="stylesheet" href="https://doxbin.org/legacy/app.css?r=46">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="/legacy/css/show.css?r=44" rel="stylesheet">
+    <link href="https://doxbin.org/legacy/google-code-prettify/tomorrow-night.css" rel="stylesheet">
+    <link href="https://doxbin.org/legacy/toastr/toastr.min.css" rel="stylesheet">
+    <script src="https://doxbin.org/legacy/custom.modernizr.js"></script>
+    <script src="https://doxbin.org/legacy/jquery.min.js"></script>
+    <link href="/files/doxbin.css?r=32" rel="stylesheet">
+
+    <style>
+        select,
+        option {
+            line-height: 1.2;
+            color: white;
+            background: #282828;
+            border: 0;
+            border-radius: 2px;
+            display: inline-block;
+            -webkit-font-smoothing: antialiased;
+            outline: none;
+            padding: 7px 5px;
+            width: 50%;
+            /* margin-bottom: 10px; */
+        }
+
+        .right {
+            text-align: right;
+            width: 100%;
+        }
+
+        select,
+        option {
+            font-size: 100%;
+        }
+
+        input#paste-password:disabled {
+            color: rgb(190, 190, 190);
+        }
+
+        pre a:hover {
+            text-decoration: underline;
+        }
+
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://example.com/MaterialIcons-Regular.eot);
+            /* For IE6-8 */
+            src: local('Material Icons'),
+                local('MaterialIcons-Regular'),
+                url(https://doxbin.org/MaterialIcons-Regular.woff2) format('woff2'),
+                url(https://doxbin.org/MaterialIcons-Regular.woff) format('woff'),
+                url(https://doxbin.org/MaterialIcons-Regular.ttf) format('truetype');
+        }
+
+
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            /* Preferred icon size */
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+
+            /* Support for all WebKit browsers. */
+            -webkit-font-smoothing: antialiased;
+            /* Support for Safari and Chrome. */
+            text-rendering: optimizeLegibility;
+
+            /* Support for Firefox. */
+            -moz-osx-font-smoothing: grayscale;
+
+            /* Support for IE. */
+            font-feature-settings: 'liga';
+        }
+
+
+        .like-dislike-paste a,
+        .like-dislike-paste span {
+            display: inline-block;
+        }
+
+        .like-dislike-paste a span.material-icons,
+        .like-dislike-paste span span.material-icons {
+            font-size: 17px;
+            margin-right: 3px;
+        }
+
+        .like-dislike-paste a span.paste-likes,
+        .like-dislike-paste a span.paste-dislikes {
+            font-size: 13px;
+        }
+
+
+
+        .like-dislike-comment a,
+        .like-dislike-comment span {
+            display: inline-block;
+        }
+
+        .like-dislike-comment a span.material-icons,
+        .like-dislike-comment span span.material-icons {
+            font-size: 15px;
+            margin-right: 2px;
+        }
+
+        .like-dislike-comment a span.comment-likes,
+        .like-dislike-comment a span.comment-dislikes {
+            font-size: 11px;
+        }
+
+
+
+        #like-paste,
+        #dislike-paste,
+        a.like-comment,
+        a.dislike-comment {
+            color: white;
+        }
+
+        #like-paste:hover,
+        #dislike-paste:hover,
+        .like-comment:hover,
+        div.like-dislike-comment .dislike-comment:hover {
+            color: rgb(161, 161, 161) !important;
+        }
+
+        a.button {
+            font-size: 14px !important;
+            text-transform: none !important;
+        }
+    </style>
+    <script>
+        var doxid = 51263;
+        var cnum = 10;
+        var banned = 0;
+        var uName = "";
+        var uAdmin = 0;
+        var chc = 0;
+
+// 
+    </script>
+</head>
+
+<body class="bin" style="overflow-x: hidden;">
+    <div class="wrapper">
+        <div class="table">
+
+            <a href="#" class="show-sidebar show"><i class="fa fa-arrow-right"></i></a>
+
+            <div class="sidebar">
+                <a class="sidebar-logo" href="https://doxbin.org">
+                    <pre>
+  ____            _     _       
+ |  _ \  _____  _| |__ (_)_ __  
+ | | | |/ _ \ \/ / '_ \| | '_ \ 
+ | |_| | (_) &gt;  &lt;| |_) | | | | |
+ |____/ \___/_/\_\_.__/|_|_| |_|
+</pre>
+                </a>
+                <div class="right">
+                </div>
+
+
+                <div class="options" style="padding-top:3px;">
+                    <div class="paste-properties">
+                    </div>
+
+                    <p><span style="font-weight:bold; color: white;">Title:</span><span style="float: right;">Desmond
+                            Singh</span></p>
+                    <p><span style="font-weight:bold; color: white;">Created:</span><span style="float: right;">Nov
+                            17th, 2020</span></p>
+
+                    <p><span style="font-weight:bold; color: white;">Created by:</span><span style="float: right;">
+                            <a style="color: #780A48; font-weight: bold;" href="/user/MKV">MKV <span
+                                    style="color: #780A48;">[Criminal]</span></a>
+
+                        </span>
+                    </p>
+                    <p><span style="font-weight:bold; color: white;">Views:</span> <span
+                            style="float: right;">9,306</span></p>
+                    <p><span style="font-weight:bold; color: white;">Comments:</span> <span
+                            style="float: right;">43</span></p>
+                    <div class="like-dislike-paste" style="margin-top: 10px;">
+                        <span id="like-paste"><span class="material-icons">thumb_up</span><span
+                                id="paste-likes">2</span></span>
+
+                        <span id="dislike-paste"><span class="material-icons">thumb_down</span><span
+                                id="paste-dislikes">0</span></span>
+                    </div>
+
+                </div>
+
+                <div class="options" id="btns">
+                    <ul>
+                        <li><a href="/upload" class="btn new">New (N)</a></li>
+                        <li><a target="_blank" href="/upload/DesmondSingh/raw" class="btn raw">Raw (R)</a></li>
+
+                    </ul>
+                </div>
+
+                <div class="options" id="cmntsctn">
+                    <ul>
+                        <p id="error-msg" style="color: red; padding: 0px; text-align: center; margin: 0;"></p>
+                        <li>
+                            <p style="width: 100%; color: #b7b7b7; margin: 0;"><b>Username:</b> Anonymous - <a
+                                    class="cmt-name-link" href="/login">(Login)</a></p>
+                        </li>
+                        <li><textarea id="comment" placeholder="Your comment"></textarea></li>
+                        <div class="g-recaptcha" data-theme="dark"
+                            data-sitekey="6LdcWhUeAAAAAHuAdCjWcp5L_tWZn9sM9QPZAPcA"></div>
+                        <li><a class="btn raw" id="create" style="cursor: pointer;">Submit Comment</a></li>
+                        <input type="hidden" name="_token" value="A2vJIVVMTOP9J2gfdZosPAgAuewoT0mfckg4CWea">
+                    </ul>
+                    <div class="comment-container">
+                        <div class="b-comments" id="paste-comments">
+                            <div class="b-comments b-comment" style="padding-left: 10px; position: relative;"
+                                id="197160">
+                                <b>
+                                    Anonymous
+                                    <!-- change to anon when done -->
+                                </b> - <p title="Apr 21st, 2022 - 7:44PM" style="display: inline;">
+                                    1 day ago</p>
+                                <br>
+                                <div class="b-content" style="padding-bottom: 5px;">
+                                    https://doxbin.com/upload/MEXICANGIRLUGLYCAUTION</div>
+                                <br>
+
+                            </div>
+                            <div class="b-comments b-comment" style="padding-left: 10px; position: relative;"
+                                id="192663">
+                                <b>
+                                    <a style="color: #2a9fd6;" href="/user/nxssir666">nxssir666</a>
+                                </b> - <p title="Mar 31st, 2022 - 12:46AM" style="display: inline;">
+                                    3 weeks ago</p>
+                                <br>
+                                <div class="b-content" style="padding-bottom: 5px;">creative ahh dox</div>
+                                <br>
+
+                            </div>
+                            <div class="b-comments b-comment" style="padding-left: 10px; position: relative;"
+                                id="190605">
+                                <b>
+                                    Anonymous
+                                    <!-- change to anon when done -->
+                                </b> - <p title="Mar 23rd, 2022 - 1:52AM" style="display: inline;">
+                                    1 month ago</p>
+                                <br>
+                                <div class="b-content" style="padding-bottom: 5px;">Fake dox</div>
+                                <br>
+
+                            </div>
+                            <div class="b-comments b-comment" style="padding-left: 10px; position: relative;"
+                                id="186770">
+                                <b>
+                                    Anonymous
+                                    <!-- change to anon when done -->
+                                </b> - <p title="Mar 7th, 2022 - 5:33PM" style="display: inline;">
+                                    1 month ago</p>
+                                <br>
+                                <div class="b-content" style="padding-bottom: 5px;">i&#039;m contacting your parole
+                                    officer rn to let him know what ur doing</div>
+                                <br>
+
+                            </div>
+                            <div class="b-comments b-comment" style="padding-left: 10px; position: relative;"
+                                id="186769">
+                                <b>
+                                    Anonymous
+                                    <!-- change to anon when done -->
+                                </b> - <p title="Mar 7th, 2022 - 5:31PM" style="display: inline;">
+                                    1 month ago</p>
+                                <br>
+                                <div class="b-content" style="padding-bottom: 5px;">bro ill literally kill you desmond
+                                    babloo singh</div>
+                                <br>
+
+                            </div>
+                            <div class="b-comments b-comment" style="padding-left: 10px; position: relative;"
+                                id="186713">
+                                <b>
+                                    Anonymous
+                                    <!-- change to anon when done -->
+                                </b> - <p title="Mar 7th, 2022 - 9:51AM" style="display: inline;">
+                                    1 month ago</p>
+                                <br>
+                                <div class="b-content" style="padding-bottom: 5px;">FAKE DOX LMFAOOOOOOOOOOOO HARMLESS
+                                    15 YEAR OLD STICK TO SENDING PIZZA TO WRONG ADDY</div>
+                                <br>
+
+                            </div>
+                            <div class="b-comments b-comment" style="padding-left: 10px; position: relative;"
+                                id="186412">
+                                <b>
+                                    Anonymous
+                                    <!-- change to anon when done -->
+                                </b> - <p title="Mar 5th, 2022 - 11:11AM" style="display: inline;">
+                                    1 month ago</p>
+                                <br>
+                                <div class="b-content" style="padding-bottom: 5px;">Wrong addy clown. Listing socials
+                                    and unused emails isn’t a dox LMFAOOOOO
+
+                                    #UNDOXABLE</div>
+                                <br>
+
+                            </div>
+                            <div class="b-comments b-comment" style="padding-left: 10px; position: relative;"
+                                id="184751">
+                                <b>
+                                    Anonymous
+                                    <!-- change to anon when done -->
+                                </b> - <p title="Feb 23rd, 2022 - 1:21AM" style="display: inline;">
+                                    1 month ago</p>
+                                <br>
+                                <div class="b-content" style="padding-bottom: 5px;">FAKE DOX
+                                    WRONG ADDY
+                                    #UNDOXABLE</div>
+                                <br>
+
+                            </div>
+                            <div class="b-comments b-comment" style="padding-left: 10px; position: relative;"
+                                id="184525">
+                                <b>
+                                    Anonymous
+                                    <!-- change to anon when done -->
+                                </b> - <p title="Feb 21st, 2022 - 6:17PM" style="display: inline;">
+                                    2 months ago</p>
+                                <br>
+                                <div class="b-content" style="padding-bottom: 5px;">Year later nigga still doesn’t have
+                                    the correct addy LMFAOOO
+                                    MKV THE CLOWN</div>
+                                <br>
+
+                            </div>
+                            <div class="b-comments b-comment" style="padding-left: 10px; position: relative;"
+                                id="184411">
+                                <b>
+                                    Anonymous
+                                    <!-- change to anon when done -->
+                                </b> - <p title="Feb 20th, 2022 - 8:46PM" style="display: inline;">
+                                    2 months ago</p>
+                                <br>
+                                <div class="b-content" style="padding-bottom: 5px;">fake dox he lives in NY</div>
+                                <br>
+
+                            </div>
+
+                            <a class="btn raw" id="more" style="cursor: pointer;">Load More Comments</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="options r-hide" id="tos-display">
+                    <p style="margin-top: 0;color: white;">Please note that all posted information is publicly available
+                        and must follow our <a href="https://doxbin.org/tos"
+                            style="text-decoration: underline;">TOS.</a></p>
+                </div>
+
+            </div>
+
+            <div class="show-container" style="padding-left: 20px;">
+                <pre style="color: white; margin: 0;"> <!-- clickable links -->
+                                                                                                  `7MMM.     ,MMF'
+                                  =--==-                                                            MMMb    dPMM
+                                   : .-==++==                                                       M YM   ,M MM
+                                    -----: :++-:                                                    M  Mb  M' MM
+                                     :-:.. :-:=*-.                                                  M  YM.P'  MM
+                                       ==-= .+-.*-            --   .                                M  `YM'   MM
+                                         :--:-=.:%        =:=*  :.   -       ::.:::.::            .JML. `'  .JMML
+                                          -=-.==.#       *: -=         . #:.=++++==+
+                                            . :-:==                     -#*+::-=++                `7MMF' `YMM'
+                                             ::.-:%    +-       .  **+.   =#.:::                    MM   .M'   
+                                              ::.-%:    ..  .-  +::*.:*: :-.#.                      MM .d&quot;
+                                               ...#%+ %+%.---+=.:#=.  .++==++:                      MMMMM.
+                                                 *=.  .##%#+. .*+.      .*                          MM  VMA
+                                                       .-#.*--=-::      =                         .JMML.   MMb.
+                                               .      -=-#.:=-: .**+-.: 
+                                              .      =+:-+*+=:.  .:: -                            `7MMF'   `7MF'
+                                             :      :*      :=#-   #--                              `MA     ,V
+                                            -    .:-#-        .=+++*%++                              VM:   ,V
+                                            :     :-+*=:          ..-=%%%%                            MM.  M'
+                                            .         .-++=-:::....:+@@@@@@%:                         `MM A'
+                                           =*.            :*#*+**%%@@@@@@@@@@@*                        :MM;
+                                          +==**=:            ::... .*@@#@@@@@@@@%                       VF
+                                         - -:  .-====-::.. .        .=:   %@@@@@@@%*                           
+                                       -  :*        .::-==++*+:.. .==*-   -#%@@@@@@@@-                         
+                                     -: - *.               -%@@@%:=*=**      =%@@@@%==+:.:                     
+                                 :.     * =:               .*@%%.-=.  .  :  :@@@@@%.   ==. -                   
+                                .       *         ##.       -       ::    :@@@@@@@++=-  ..-: :                 
+                                        =         .:       :=             %@@@@@#-=-=:..   -::%-               
+                                         .                :    Doxed      *@@@@#             *@%%              
+                -           .           --        .:  :-         by       *@@@#               :%##%*           
+           :               .           :#.*.=%*+==: .=         Makarov   +@@@@+                  ####          
+                    :=#   =           .%*=#++.   ::                      +@@@%.                    #%.         
+       . --      +***+==#+.          :#.  ..   :=                        *@@@#                        +    +   
+                 .:    -:         ::+*.      .                           +@@@%.                         =#     
+                                 -#%=      :                              #@@@*                                
+                            .: .+%@-   .:                                 +%                                   
+     :                  .--**                                                                                  
+  .:               .::::--                                                                                     
+  ..       ..                                                                                                  
+                                                                                                               
+ .:
+     ##### /##
+  ######  / ##
+ /#   /  /  ##
+/    /  /   ##
+    /  /    /
+   ## ##   /       /##       /###       /###       /###    ###  /###
+   ## ##  /       / ###     / ###  /   / #### /   / ###  /  ###/ #### /
+   ## ###/       /   ###   /   ###/   ##  ###/   /   ###/    ##   ###/
+   ## ##  ###   ##    ### ##    ##   ####       ##    ##     ##    ##
+   ## ##    ##  ########  ##    ##     ###      ##    ##     ##    ##
+   #  ##    ##  #######   ##    ##       ###    ##    ##     ##    ##
+      /     ##  ##        ##    ##         ###  ##    ##     ##    ##
+  /##/      ### ####    / ##    /#    /###  ##  ##    ##     ##    ##
+ /  ####    ##   ######/   ####/ ##  / #### /    ######      ###   ###
+/    ##     #     #####     ###   ##    ###/      ####        ###   ###
+#
+ ##
+
+       - The 9 month long harassment of an innocent 20 year-old female with the name of Alexendra Bellman.
+       - Spamming Doxbin/Twitter/Reddit/Telegram with her dox and craving her attention which led to an open case on Desmond
+         for electronic communication harassment.
+       - Tried to pay somebody to rape her - <a href="https://a.pomf.cat/xcjxqn.png" target="_blank" rel="noopener noreferrer">https://a.pomf.cat/xcjxqn.png</a>
+       - Lying to his fellow peers and friends saying she was harassing him, which never happened.  
+       - After confrontation, could not provide genuine proof of anything. Also pretends to live in a penthouse in New York. 
+       - Threatens his own family for money because he's too mentally unstable to pursue a career.     
+       - &quot;SHE IS LITERALLY OLDER THAN ME ITS SO WEIRD I FEEL UNCOMFORTABLE AF DO SOMETHING TO HER SHES SO UGLY 
+          TOO SHE LITERALLY SMILED AT ME WHEN SHE WAS FOLLOWING ME ON THE SUBWAY FUCKING WEirdo&quot; 
+              - Has obviously never talked to a female.
+       - Claims to have 400k in his trezor :lol:.    
+       - Proof of harassment:
+                - <a href="https://a.pomf.cat/dkmizz.jpg" target="_blank" rel="noopener noreferrer">https://a.pomf.cat/dkmizz.jpg</a> (Instagram account dedicated to her)          
+                - <a href="https://a.pomf.cat/gxjwuh.jpg" target="_blank" rel="noopener noreferrer">https://a.pomf.cat/gxjwuh.jpg</a> (Desmond's obsessions)
+        
+        - Charges against him: (<a href="https://a.pomf.cat/dttnjk.jpg" target="_blank" rel="noopener noreferrer">https://a.pomf.cat/dttnjk.jpg</a> - Proof)
+                - False Bomb Threat - Felony
+                - False Bomb Report-  Misdemeanor 
+                - Misuse of Electronic &amp; Telephone Services - Misdemeanor 
+                - Revenge Porn - Misdemeanor       
+
+        ##        ###
+     /####         ###      #
+    /  ###          ##     ###
+       /##          ##      #
+      /  ##         ##
+      /  ##         ##    ###        /###       /###
+     /    ##        ##     ###      / ###  /   / #### /
+     /    ##        ##      ##     /   ###/   ##  ###/
+    /      ##       ##      ##    ##    ##   ####
+    /########       ##      ##    ##    ##     ###
+   /        ##      ##      ##    ##    ##       ###
+   #        ##      ##      ##    ##    ##         ###
+  /####      ##     ##      ##    ##    /#    /###  ##
+ /   ####    ## /   ### /   ### /  ####/ ##  / #### /
+/     ##      #/     ##/     ##/    ###   ##    ###/
+#
+ 
+
+        - Desmond Signh
+        - Desmond
+        - D
+        - Des
+        - Has her information as an alias, also.
+ 
+
+        ##### ##                                                                         ###
+     ######  /###                                                                         ###
+    /#   /  /  ###                                                                         ##
+   /    /  /    ###                                                                        ##
+       /  /      ##                                                                        ##
+      ## ##      ##    /##    ###  /###       /###       /###    ###  /###       /###      ##
+      ## ##      ##   / ###    ###/ #### /   / #### /   / ###  /  ###/ #### /   / ###  /   ##
+    /### ##      /   /   ###    ##   ###/   ##  ###/   /   ###/    ##   ###/   /   ###/    ##
+   / ### ##     /   ##    ###   ##         ####       ##    ##     ##    ##   ##    ##     ##
+      ## ######/    ########    ##           ###      ##    ##     ##    ##   ##    ##     ##
+      ## ######     #######     ##             ###    ##    ##     ##    ##   ##    ##     ##
+      ## ##         ##          ##               ###  ##    ##     ##    ##   ##    ##     ##
+      ## ##         ####    /   ##          /###  ##  ##    ##     ##    ##   ##    /#     ##
+      ## ##          ######/    ###        / #### /    ######      ###   ###   ####/ ##    ### /
+ ##   ## ##           #####      ###          ###/      ####        ###   ###   ###   ##    ##/
+###   #  /
+ ###    /
+  #####/
+    ###
+
+
+Name -                  Desmond Babloo Singh
+
+DOB -                   June 6, 2001 (<a href="https://a.pomf.cat/dttnjk.jpg" target="_blank" rel="noopener noreferrer">https://a.pomf.cat/dttnjk.jpg</a> - Court document)
+
+Address -               1211 Fawn Lily Dr, Temple, TX 76502-7802 (Parents current - 2019)
+
+Phone # -               512-855-8044
+                        443-963-4305
+Emails -        
+                        departure@protonmail.com (@outfit twit connected)
+	                d*******c@gmail.com (@desmond IG email)
+	                Desmond.singh@stu.pfisd.net
+	                desmondsingh600@gmail.com
+      
+Password -              Ar3wehuman
+
+IP(s) -                 63.153.121.69
+
+ Discord    &raquo;            des#1311
+ OGUsers    &raquo;            <a href="https://ogusers.com/Desmond" target="_blank" rel="noopener noreferrer">https://ogusers.com/Desmond</a>
+                         <a href="https://ogusers.com/desm0nd" target="_blank" rel="noopener noreferrer">https://ogusers.com/desm0nd</a>
+                         <a href="https://ogusers.com/user49776" target="_blank" rel="noopener noreferrer">https://ogusers.com/user49776</a>
+                         <a href="https://ogusers.com/user49779" target="_blank" rel="noopener noreferrer">https://ogusers.com/user49779</a>
+ Instagram  &raquo;            <a href="https://instagram.com/desmond" target="_blank" rel="noopener noreferrer">https://instagram.com/desmond</a>
+ Twitter  	&raquo;        <a href="https://twitter.com/outfit" target="_blank" rel="noopener noreferrer">https://twitter.com/outfit</a> (sus)                
+ RaidForums &raquo;            <a href="https://raidforums.com/User-desmond1" target="_blank" rel="noopener noreferrer">https://raidforums.com/User-desmond1</a>
+ Telegram   &raquo;            <a href="https://t.me/ALEXBELLMAN" target="_blank" rel="noopener noreferrer">https://t.me/ALEXBELLMAN</a>
+ Xbox       &raquo;            Desmond
+
+
+                                                                 
+     ##### ##                               ###                  
+  ######  /### /                        #    ###                 
+ /#   /  /  ##/                        ###    ##                 
+/    /  /    #                          #     ##                 
+    /  /                                      ##                 
+   ## ##       /###   ### /### /###   ###     ##  ##   ####      
+   ## ##      / ###  / ##/ ###/ /##  / ###    ##   ##    ###  /  
+   ## ###### /   ###/   ##  ###/ ###/   ##    ##   ##     ###/   
+   ## ##### ##    ##    ##   ##   ##    ##    ##   ##      ##    
+   ## ##    ##    ##    ##   ##   ##    ##    ##   ##      ##    
+   #  ##    ##    ##    ##   ##   ##    ##    ##   ##      ##    
+      #     ##    ##    ##   ##   ##    ##    ##   ##      ##    
+  /####     ##    /#    ##   ##   ##    ##    ##   ##      ##    
+ /  #####    ####/ ##   ###  ###  ###   ### / ### / #########    
+/    ###      ###   ##   ###  ###  ###   ##/   ##/    #### ###   
+#                                                           ###  
+ ##                                                  #####   ### 
+                                                   /#######  /#  
+                                                  /      ###/    
+
+███╗   ███╗ ██████╗ ████████╗██╗  ██╗███████╗██████╗ 
+████╗ ████║██╔═══██╗╚══██╔══╝██║  ██║██╔════╝██╔══██╗
+██╔████╔██║██║   ██║   ██║   ███████║█████╗  ██████╔╝
+██║╚██╔╝██║██║   ██║   ██║   ██╔══██║██╔══╝  ██╔══██╗
+██║ ╚═╝ ██║╚██████╔╝   ██║   ██║  ██║███████╗██║  ██║
+╚═╝     ╚═╝ ╚═════╝    ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+                                                     
+Name -              Daisy Alec Singh (Kahn)
+SSN -               219312066
+DOB -               10th July 1966
+
+Phone -
+                    (443) 220-1758 (Cell - Inactive)
+                    (443) 725-5489 (Landline - Active)	
+Address' -
+                    1211 Fawn Lily Dr, Temple, TX 76502-7802 (Current - 2019)
+                    19804 Cheyenne Valley Dr, Round Rock, TX 78664 2015
+                    910 Poplar Grove St, Balt, MD 21216, lived here in 2015 - 2016
+                    10926 Jollyville Rd #904, Austin, TX 78759, lived here in 2014
+                    29 Lincoln Woods Way #2C, Perry Hall, MD 21128, lived here in 2009
+                    4001 U.S. 9, Howell, NJ 07731, lived here in 2008
+                    4504 Ambermill Rd, Nottingham, MD 21236, lived here in 2005
+                    7410 Stewart and Gray Rd #C, Downey, CA 90241, lived here in 2000 - 2017
+                    9201 New Hampshire Ave NE #B3, Silver Spring, MD 20903, lived here in 1998
+                    6314 Greenspring Ave #307, Balt, MD 21209, lived here in 1998 - 1999
+                    1017 University Blvd E #202, Silver Spring, MD 20903, lived here in 1995 - 2004
+                    1017 University Blvd E, Silver Spring, MD 20903, lived here in 1994 - 1996
+                    8604 Carroll Ave #8, Silver Spring, MD 20903, lived here in 1993 - 1994 
+                    
+Emails -
+                    daisysinghb@aol.com
+                    daisin4@aol.com
+                    daisysingh99@gmail.com
+                    daisy.singh@comcast.net
+
+ IP -               97.79.201.205
+                    173.245.52.143        
+
+Password(s) -
+		    88011959l
+		    92sjjvfx
+		    iwant10apl
+
+Skypes -
+                    daisysingh99
+	            singh.daisy99
+	            daisysingh1234
+	            live:dainsysingh99
+
+Old company - 
+                    <a href="https://opencorporates.com/companies/us_tx/0802584460" target="_blank" rel="noopener noreferrer">https://opencorporates.com/companies/us_tx/0802584460</a> (Company /w Husband)  
+
+ Database Records - 
+                    [OGUsers]- user49779:daisysingh99@gmail.com:8343cd7e261f69471704fa359cbd43fd:RM5oC2ow
+                    daisysingh99@gmail.com:Ar3wehuman                                     
+
+
+███████╗ █████╗ ████████╗██╗  ██╗███████╗██████╗ 
+██╔════╝██╔══██╗╚══██╔══╝██║  ██║██╔════╝██╔══██╗
+█████╗  ███████║   ██║   ███████║█████╗  ██████╔╝
+██╔══╝  ██╔══██║   ██║   ██╔══██║██╔══╝  ██╔══██╗
+██║     ██║  ██║   ██║   ██║  ██║███████╗██║  ██║
+╚═╝     ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+                                                 
+Name -              Babloo George Singh
+SSN -               217558839
+DOB -               28th Feb 1967
+
+Phone -             (443) 725-5489 (Recent?)
+	            (443) 220-1758 
+	            (443) 366-5317
+	            (443) 297-2853
+
+Address -           
+                    1211 Fawn Lily Dr, Temple, TX 76502-7802 (Current - 2019)
+                    19804 Cheyenne Valley Dr, Round Rock, TX 78664 (2015)
+
+Employment -
+                    C.R. England Inc. Texas
+                    Manager @ SMILE INDO AMERICAN FOOD, Balimore, MD (2008)
+
+</pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://doxbin.org/legacy/mousetrap.min.js"></script>
+    <script src="https://doxbin.org/legacy/google-code-prettify/prettify.js"></script>
+    <script src="https://doxbin.org/legacy/tabby.js"></script>
+    <script src="https://doxbin.org/legacy/zclip.min.js"></script>
+    <script src="https://doxbin.org/legacy/toastr/toastr.min.js"></script>
+    <script src="https://doxbin.org/legacy/bin.js"></script>
+    <script src="https://doxbin.org/legacy/logout.js"></script>
+    <script src="https://doxbin.org/legacy/paste.js?r=1"></script>
+    <script>
+        var captcha = 'recaptcha';
+
+        //         
+        $('#like-paste, #dislike-paste').on('click', function (e) {
+            window.location = '/register';
+        });
+
+        // 
+
+
+
+
+        //  ?endif
+
+        $('#paste-password-submit').on('click', function (e) {
+            $(this).text('Submitting...');
+            $.post('/upload/DesmondSingh/manage', {
+                _token: $('input[name=_token]').val(),
+                action: 'edit-password',
+                value: $('#paste-password').val()
+            }, function (resp) {
+                if (resp.status == "err") {
+                    if (resp.msg) {
+                        $(this).text(resp.msg);
+                    } else {
+                        $(this).text('Error');
+                    }
+                } else {
+                    $('#password-options').show();
+                    $('#paste-password-submit').hide();
+                    $('#paste-password').prop('disabled', true);
+                }
+            });
+            e.preventDefault();
+        });
+        $('#edit-password').on('click', function (e) {
+            // $('#password-options').hide();
+            $('#paste-password-submit').text('Save password').show();
+            $('#paste-password').prop('disabled', false).focus();
+            e.preventDefault();
+        });
+        $('#remove-password').on('click', function (e) {
+            $.post('/upload/DesmondSingh/manage', {
+                _token: $('input[name=_token]').val(),
+                action: 'remove-password'
+            }, function (resp) {
+                if (resp.status == "err") {
+                    alert(resp);
+                } else {
+                    $('#password-options').hide();
+                    $('#paste-password-submit').text('Password protect paste').show();
+                    $('#paste-password').val('');
+                    $('#paste-password').prop('disabled', false);
+                }
+            });
+            e.preventDefault();
+        });
+        $('#fpblacklist').on('click', function (e) {
+            $.post('/admin/api/ban', {
+                _token: $('input[name=_token]').val(),
+                pid: doxid,
+                val: !banned
+            }, function (resp) {
+                if (resp.status == "done") {
+                    location.reload();
+                } else {
+                    alert(resp.status);
+                }
+            });
+            e.preventDefault();
+        });
+
+        $('#vis').on('change', function (e) {
+            $.post('/api/pastes/visibility', {
+                _token: $('input[name=_token]').val(),
+                pid: doxid,
+                val: this.value
+            }, function (resp) {
+                if (resp.status == 1) {
+                    location.reload();
+                }
+            });
+            e.preventDefault();
+        });
+
+        // 
+        // 
+
+
+        $('#paste-manage').on('click', function (e) { // br3nnnt0n
+            if (b1) {
+                $('#paste-manager').hide();
+                $('#tos-display').show();
+                $('#staff-btns, #btns, #hidden-by, #cmntsctn, .staff-notes').show();
+            } else {
+                $('#paste-manager').show();
+                $('#tos-display').hide();
+                $('#staff-btns, #btns, #hidden-by, #cmntsctn, .staff-notes').hide();
+            }
+            b1 = !b1;
+            e.preventDefault();
+        });
+
+        $('#hide-dropdown').on('change', function () { // Hide dropdown
+            $('#hide-reason').val(this.value);
+        });
+
+
+        // 
+        // 
+
+        var b1 = false;
+
+        $('#create-note').on('click', function (e) {
+            var username = "Anonymous";
+            var note = $('#note').val();
+            $.post('/admin/api/staff-comment', {
+                _token: $('input[name=_token]').val(),
+                pid: doxid,
+                action: 'create',
+                note: $('#note').val(),
+                nid: 0
+            }, function (resp) {
+                if (resp.status == "done") {
+                    $('#note').val('');
+                    username = htmlspecialchars(username.trim());
+                    note = htmlspecialchars(note.trim());
+                    if (uName != "") {
+                        username = htmlspecialchars(uName);
+                    }
+                    if (username.length == 0) {
+                        username = "Anonymous";
+                    }
+                    $('.staff-notes-cont').append('<div class="b-comments b-comment" style="padding-left: 10px;"><b>' + (uName != "" ? '<a ' + (uAdmin != 0 ? 'style="color: red;"' : '') + 'href="/user/' + username + '">' + username + '</a>' : username) + '</b> - <p style="display: inline;">now</p><br><div class="b-content">' + note + '</div><br></div>');
+                } else {
+                    alert('Error');
+                }
+            });
+        });
+        $('.deletenote').on('click', function (e) {
+            var th = $(this);
+            $.post('/admin/api/staff-comment', {
+                _token: $('input[name=_token]').val(),
+                pid: doxid,
+                action: 'remove',
+                nid: $(this).attr('data-nid')
+            }, function (resp) {
+                if (resp.status == "done") {
+                    th.parent().remove();
+                } else {
+                    alert('Error');
+                }
+            });
+            e.preventDefault();
+        });
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+
+</html>
+
+<!-- brenton / b@doxbin.org t.me/brenton -->

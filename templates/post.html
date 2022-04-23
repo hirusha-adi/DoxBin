@@ -154,7 +154,7 @@
     <div class="wrapper">
         <div class="table">
 
-            <a href="#" class="show-sidebar show"><i class="fa fa-arrow-right"></i></a>
+            <!-- <a href="#" class="show-sidebar show"><i class="fa fa-arrow-right"></i></a> -->
 
             <div class="sidebar">
                 <a class="sidebar-logo" href="{{ url_for('index') }}">
@@ -176,26 +176,31 @@
                             Title:
                         </span>
                         <span style="float: right;">
-                            Desmond
-                            Singh
+                            {{ filename }}
                         </span>
                     </p>
                     <p>
                         <span style="font-weight:bold; color: white;">
-                            Title:
+                            Size:
                         </span>
                         <span style="float: right;">
-                            Desmond
-                            Singh
+                            {{ size }} KB
                         </span>
                     </p>
                     <p>
                         <span style="font-weight:bold; color: white;">
-                            Title:
+                            Time:
                         </span>
                         <span style="float: right;">
-                            Desmond
-                            Singh
+                            {{ creation_time }}
+                        </span>
+                    </p>
+                    <p>
+                        <span style="font-weight:bold; color: white;">
+                            Date:
+                        </span>
+                        <span style="float: right;">
+                            {{ creation_date }}
                         </span>
                     </p>
 
@@ -230,10 +235,7 @@
             </div>
 
             <div class="show-container" style="padding-left: 20px;">
-                <pre style="color: white; margin: 0;">
-                    <!-- Main Content Goes Here -->
-                    Dick
-                </pre>
+                <pre style="color: white; margin: 0;">{{ file_content }}</pre>
             </div>
 
         </div>

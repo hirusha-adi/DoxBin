@@ -1,16 +1,154 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}
-Doxbin-FOSS
-{% endblock %}
+<head>
+    <title>Doxbin</title>
 
-{% block content %}
-<div class="col-md-12">
-    <div class="col-md-12" style="margin-top: 60px;float:none;">
-        <div align="center">
+    <!-- Main Imports -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='legacy/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='legacy/css/main.css') }}">
+    <link href="{{ url_for('static', filename='legacy/dropdown.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='files/doxbin.css') }}" rel="stylesheet">
 
-            <pre
-                style="font: 4px/6px monospace; background-color: #060606; overflow-x: hidden; overflow-y: hidden; border: none; color: white;">
+    <!-- Other Imports -->
+    <link href="{{ url_for('static', filename='others/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='others/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='others/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='others/bootstrap-responsive.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='others/bootstrap-responsive.min.css') }}" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Main Meta Tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Doxbin-FOSS is a document sharing and publishing website for text-based information such as dox, code-snippets and other stuff.">
+    <!-- All Meta Tags Ends here -->
+
+    <!-- Custom CSS to fix some dark-mode issues -->
+    <style>
+        body,
+        p {
+            background-color: #060606;
+            color: white;
+        }
+
+        td,
+        tr,
+        tbody {
+            background-color: #060606;
+            color: white;
+        }
+
+        /* Custom CSS to fix messed up table colors */
+        .table>tfoot>tr>th,
+        .table>tfoot>tr>td {
+            border-top-color: rgb(108, 100, 88);
+        }
+
+        .table-striped tbody>tr:nth-child(2n+1)>td,
+        .table-striped tbody>tr:nth-child(2n+1)>th {
+            background-color: rgb(23, 25, 26);
+        }
+
+        .table-striped tbody>tr:nth-child(2n)>td,
+        .table-striped tbody>tr:nth-child(2n)>th {
+            background-color: #0f0f0f;
+        }
+
+        .table>tfoot>tr>th,
+        .table>tfoot>tr>td {
+            line-height: 1.42857;
+            vertical-align: top;
+            padding: 8px;
+            border-top: 1px solid rgb(40, 40, 40);
+        }
+
+        /* Dark Mode Scrollbar */
+        ::-webkit-scrollbar {
+            background-color: #1b1e1f;
+            color: #918b82;
+        }
+
+        ::-webkit-scrollbar-corner {
+            background-color: #141617;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #3b3f41;
+        }
+    </style>
+    <!-- Custom CSS Ends here -->
+</head>
+
+<body>
+
+    <!-- Navbar - Starts Here -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+
+            <!-- Mobile Navbar -->
+            <div class="navbar-header">
+                <!-- <a class="navbar-brand" href=""> -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                    All Pages
+                </button>
+                <!-- </a> -->
+                <a class="navbar-brand" href="{{ url_for('index') }}">
+                    Doxbin
+                </a>
+            </div>
+
+            <!-- Desktop Navbar -->
+            <div id="navbar" class="collapse navbar-collapse navbar-header">
+
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="{{ url_for('index') }}">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('new_paste') }}">
+                            Add Paste
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doxbin.org/hoa">
+                            Hall of Autism
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doxbin.org/tos">
+                            TOS
+                        </a>
+                    </li>
+                </ul>
+                <div class="sidebar-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ url_for('all_links') }}">All Pages</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar - Ends Here -->
+
+    <!-- Inherited Content Starts here -->
+    {% block content %}
+    {% endblock %}
+    <!-- Inherited Content Ends here -->
+
+
+    <div class="col-md-12">
+        <div class="col-md-12" style="margin-top: 60px;float:none;">
+            <div align="center">
+
+                <pre
+                    style="font: 4px/6px monospace; background-color: #060606; overflow-x: hidden; overflow-y: hidden; border: none; color: white;">
                                                                            @                                                     
                                                                          . @ .                                                     
                                                                   @%,   % @ @.&    &%                                                 
@@ -64,61 +202,61 @@ Doxbin-FOSS
                                                                            #                                                             
                 </pre>
 
-            <h5 class="announcement a-1" style="color:#00AAFF;">
-                <u>
-                    <a style="color:inherit;" href="{{ url_for('index') }}">
-                        Doxbin
-                    </a>
-                </u>
-            </h5>
+                <h5 class="announcement a-1" style="color:#00AAFF;">
+                    <u>
+                        <a style="color:inherit;" href="{{ url_for('index') }}">
+                            Doxbin
+                        </a>
+                    </u>
+                </h5>
 
-            <h5 class="announcement a-2" style="color:#08EFFF;">
-                <u>
-                    <a style="color:inherit;" href="https://github.com/hirusha-adi/DoxBin">
-                        Free and Open Source Rebuild
-                    </a>
-                </u>
-            </h5>
-
-
-            <h5 class="announcement a-2" style="color:#00AAFF;">
-                <u>
-                    <a style="color:inherit;" href="{{ url_for('all_links') }}">
-                        All Pages
-                    </a>
-                </u>
-            </h5>
+                <h5 class="announcement a-2" style="color:#08EFFF;">
+                    <u>
+                        <a style="color:inherit;" href="https://github.com/hirusha-adi/DoxBin">
+                            Free and Open Source Rebuild
+                        </a>
+                    </u>
+                </h5>
 
 
-            <label for="search-form">Search for a paste</label>
+                <h5 class="announcement a-2" style="color:#00AAFF;">
+                    <u>
+                        <a style="color:inherit;" href="{{ url_for('all_links') }}">
+                            All Pages
+                        </a>
+                    </u>
+                </h5>
 
-            <form id="search-form" method="POST" action="search">
-                <input name="search-query" type="text" placeholder="Search for...">
-                <input type="submit" value="Search">
-            </form>
 
-            <br>
+                <label for="search-form">Search for a paste</label>
 
+                <form id="search-form" method="POST" action="search">
+                    <input name="search-query" type="text" placeholder="Search for...">
+                    <input type="submit" value="Search">
+                </form>
+
+                <br>
+
+            </div>
         </div>
-    </div>
 
-    <div class="col-md-7" style="float:none;margin:auto;padding:0;">
-        <!-- PINNED PASTES -->
-        <h6 style="margin-top: 14px; color: white;">Admin Pastes</h6>
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th colspan="3">Title</th>
-                    <th class="text-center auto-size">By</th>
-                    <th class="text-center">Date</th>
-                    <th colspan="2" class="text-center">Time</th>
-                    <th style="width: 120px" class="text-center r-hide">Size</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="col-md-7" style="float:none;margin:auto;padding:0;">
+            <!-- PINNED PASTES -->
+            <h6 style="margin-top: 14px; color: white;">Admin Pastes</h6>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th colspan="3">Title</th>
+                        <th class="text-center auto-size">By</th>
+                        <th class="text-center">Date</th>
+                        <th colspan="2" class="text-center">Time</th>
+                        <th style="width: 120px" class="text-center r-hide">Size</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                <!-- Original Post Item -->
-                <!-- 
+                    <!-- Original Post Item -->
+                    <!-- 
                     <tr class="doxentry  mod-post">
                         <td colspan="3" style="overflow: hidden; text-overflow: ellipsis;"><a
                                 title="How to Ensure Your Paste Stays Up"
@@ -135,55 +273,55 @@ Doxbin-FOSS
                     </tr> 
                     -->
 
-                {% for admin_post in admin_posts_list %}
+                    {% for admin_post in admin_posts_list %}
 
-                <tr class="doxentry">
-                    <td colspan="3" style="overflow: hidden; text-overflow: ellipsis;">
-                        <a title="zalgo poor retard" href="https://doxbin.org/upload/zalgopoorretard">
-                            {{ admin_post.name }}
-                        </a>
-                    </td>
-                    <td style="width: 105px;" class="text-center">
-                        <div style="color:red;">
-                            Admin
-                        </div>
-                    </td>
-                    <td class="text-center">
-                        {{ admin_post.creation_date }}
-                    </td>
-                    <td colspan="2" style="padding-bottom: 0; max-width: 140px;" class="text-center">
-                        {{ admin_post.creation_time }}
-                    </td>
-                    <td style="width: 120px" class="text-center r-hide">
-                        {{ admin_post.size }} KB
-                    </td>
-                </tr>
+                    <tr class="doxentry">
+                        <td colspan="3" style="overflow: hidden; text-overflow: ellipsis;">
+                            <a title="zalgo poor retard" href="https://doxbin.org/upload/zalgopoorretard">
+                                {{ admin_post.name }}
+                            </a>
+                        </td>
+                        <td style="width: 105px;" class="text-center">
+                            <div style="color:red;">
+                                Admin
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            {{ admin_post.creation_date }}
+                        </td>
+                        <td colspan="2" style="padding-bottom: 0; max-width: 140px;" class="text-center">
+                            {{ admin_post.creation_time }}
+                        </td>
+                        <td style="width: 120px" class="text-center r-hide">
+                            {{ admin_post.size }} KB
+                        </td>
+                    </tr>
 
-                {% endfor %}
-            </tbody>
-        </table>
-
-
+                    {% endfor %}
+                </tbody>
+            </table>
 
 
-        <h6 style="margin-top: 14px; color: white;">Anonymous Pastes</h6>
-        <!-- normal pastes -->
-        <table class="table table-striped table-hover" style="margin-top: 0px;">
-            <thead>
-                <tr>
-                    <th colspan="3">Title</th>
-                    <th class="clickable text-center auto-size" id="commentsorder" style="width: 105px;">
-                        By
-                    </th>
-                    <th class="clickable text-center auto-size" id="viewsorder">Date</th>
-                    <th colspan="2" class="text-center">Time</th>
-                    <th class="clickable text-center r-hide" id="dateorder" style="width: 120px">Size</th>
-                </tr>
-            </thead>
-            <tbody>
 
-                <!-- Original Post Item -->
-                <!-- 
+
+            <h6 style="margin-top: 14px; color: white;">Anonymous Pastes</h6>
+            <!-- normal pastes -->
+            <table class="table table-striped table-hover" style="margin-top: 0px;">
+                <thead>
+                    <tr>
+                        <th colspan="3">Title</th>
+                        <th class="clickable text-center auto-size" id="commentsorder" style="width: 105px;">
+                            By
+                        </th>
+                        <th class="clickable text-center auto-size" id="viewsorder">Date</th>
+                        <th colspan="2" class="text-center">Time</th>
+                        <th class="clickable text-center r-hide" id="dateorder" style="width: 120px">Size</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <!-- Original Post Item -->
+                    <!-- 
                     <tr data-test="" class="doxentry" id="141314">
                         <td colspan="3" style="overflow: hidden;text-overflow: ellipsis;">
                             <a title="UPDATED" href="https://doxbin.org/upload/UPDATED"> UPDATED</a>
@@ -203,31 +341,39 @@ Doxbin-FOSS
                     </tr>
                      -->
 
-                {% for anon_post in anon_posts_list %}
-                <tr class="doxentry">
-                    <td colspan="3" style="overflow: hidden;text-overflow: ellipsis;">
-                        <a title="RE UPLOAD lethal 0001 aka catboybailey"
-                            href="https://doxbin.org/upload/REUPLOADlethal0001akacatboybailey">
-                            {{ anon_post.name }}
-                        </a>
-                    </td>
-                    <td style="width: 105px;" class="text-center">
-                        Anonymous
-                    </td>
-                    <td class="text-center">
-                        {{ anon_post.creation_date }}
-                    </td>
-                    <td colspan="2" style="padding-bottom: 0; max-width: 140px;" class="text-center">
-                        {{ anon_post.creation_time }}
-                    </td>
-                    <td style="width: 120px" class="text-center r-hide">
-                        {{ anon_post.size }} KB
-                    </td>
-                </tr>
-                {% endfor %}
+                    {% for anon_post in anon_posts_list %}
+                    <tr class="doxentry">
+                        <td colspan="3" style="overflow: hidden;text-overflow: ellipsis;">
+                            <a title="RE UPLOAD lethal 0001 aka catboybailey"
+                                href="{{ url_for('post', file=anon_post.name) }}">
+                                {{ anon_post.name }}
+                            </a>
+                        </td>
+                        <td style="width: 105px;" class="text-center">
+                            Anonymous
+                        </td>
+                        <td class="text-center">
+                            {{ anon_post.creation_date }}
+                        </td>
+                        <td colspan="2" style="padding-bottom: 0; max-width: 140px;" class="text-center">
+                            {{ anon_post.creation_time }}
+                        </td>
+                        <td style="width: 120px" class="text-center r-hide">
+                            {{ anon_post.size }} KB
+                        </td>
+                    </tr>
+                    {% endfor %}
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
-{% endblock %}
+    <!-- Go back to top -->
+    <div class="center">
+        <a href="#">Back to top</a>
+        <br><br>
+    </div>
+
+</body>
+
+</html>

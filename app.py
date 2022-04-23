@@ -80,15 +80,8 @@ def new_paste():
 def new_paste_form_post():
     global _DEFAULT_POST_TEMPLATE
     try:
-        # Sample request.values -->
-        #       CombinedMultiDict(
-        #       [ImmutableMultiDict([]),
-        #        ImmutableMultiDict(
-        #           [('pasteTitle', 'sfgds'), ('pasteContent', 'Puk Gula\r\n gfhbfgngf')]
-        #       )])
-
         args = request.values
-        pasteTitle = args.get('pasteTitle')
+        pasteTitle = str(args.get('pasteTitle')).replace("/", "%2F")
         pasteContent = args.get('pasteContent')
     except Exception as e:
         return f"Error: {e}"
@@ -98,14 +91,35 @@ def new_paste_form_post():
     return redirect(url_for('index'))
 
 
-@app.route("/post")
-def post():
-    return render_template("post.html")
+@app.route("/post/<file>")
+def post(file):
+    filename = os.path.join(ANON_PASTES, file)
+    with open(filename, "r", encoding="utf-8") as filec:
+        content = filec.read()
+    stats = os.stat(filename)
+    creation_date = datetime.utcfromtimestamp(
+        int(stats.st_mtime)).strftime('%d-%m-%Y')
+    creation_time = datetime.utcfromtimestamp(
+        int(stats.st_mtime)).strftime('%H:%M:%S')
+    size = bytes2KB(stats.st_size)
+    return render_template(
+        "post.html",
+        filename=file,
+        file_content=content,
+        creation_date=creation_date,
+        creation_time=creation_time,
+        size=size
+    )
 
 
 @app.route("/tos")
 def tos():
     return "TOS"
+
+
+@app.route("/hoa")
+def hall_of_autism():
+    return render_template("hol.html")
 
 
 if __name__ == "__main__":

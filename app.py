@@ -1,13 +1,16 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
 import os
 import sys
 from datetime import datetime
 
-print()
 app = Flask(__name__)
 
+DATA = os.path.join(os.getcwd(), "data")
 ADMIN_PASTES = os.path.join(os.getcwd(), "data", "admin")
 ANON_PASTES = os.path.join(os.getcwd(), "data", "other")
+
+with open(os.path.join(DATA, "template"), "r", encoding="utf-8") as temp_file:
+    _DEFAULT_POST_TEMPLATE = temp_file.read()
 
 
 def bytes2KB(value: int):
@@ -62,14 +65,23 @@ def new_paste():
 @app.route("/new_paste", methods=['POST'])
 def new_paste_form_post():
     try:
+        # Sample request.values -->
+        #       CombinedMultiDict(
+        #       [ImmutableMultiDict([]),
+        #        ImmutableMultiDict(
+        #           [('pasteTitle', 'sfgds'), ('pasteContent', 'Puk Gula\r\n gfhbfgngf')]
+        #       )])
+
         args = request.values
-        print(args.get('pasteTitle'))
-        print(args.get('pasteContent'))
+        pasteTitle = args.get('pasteTitle')
+        pasteContent = args.get('pasteContent')
     except Exception as e:
         return f"Error: {e}"
-    return render_template("new.html")
 
-# CombinedMultiDict([ImmutableMultiDict([]), ImmutableMultiDict([('pasteTitle', 'sfgds'), ('pasteContent', 'Puk Gula\r\n gfhbfgngf')])])
+    with open(os.path.join(ANON_PASTES, pasteTitle), "w", encoding="utf-8") as file:
+        file.write(pasteContent)
+
+    return redirect(url_for('index'), _DEFAULT_POST_TEMPLATE=_DEFAULT_POST_TEMPLATE)
 
 
 if __name__ == "__main__":

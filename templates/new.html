@@ -2,15 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
     <title>Doxbin - Create new paste</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='legacy/app.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='files/doxbin.css') }}">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 
@@ -68,9 +67,8 @@
                 </div>
 
                 <div class="editor-container">
-                    <textarea name="pasteContent" id="paste-content" class="editor mousetrap" wrap="off">
-                        Puk Gula
-                    </textarea>
+                    <textarea name="pasteContent" id="paste-content" class="editor mousetrap"
+                        wrap="off">{{ _DEFAULT_POST_TEMPLATE }}</textarea>
                 </div>
 
             </form>

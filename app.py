@@ -24,6 +24,7 @@ def refreshLoosers():
         data = json.load(file)
 
     if not(len(loosers_list) == len(data["loosers"])):
+        loosers_list = []
         for looser in data["loosers"]:
             if isinstance(looser, dict):
                 loosers_list.append(looser)
@@ -79,11 +80,6 @@ def index():
     return render_template("index.html", admin_posts_list=admin_posts_list, anon_posts_list=anon_posts_list)
 
 
-@app.route("/pages")
-def all_links():
-    return "All Links"
-
-
 @app.route("/new")
 def new_paste():
     return render_template("new.html", paste_template_text=_DEFAULT_POST_TEMPLATE)
@@ -125,14 +121,48 @@ def post(file):
     )
 
 
+@app.route("/admin/<file>")
+def admin_post(file):
+    filename = os.path.join(ADMIN_PASTES, file)
+    with open(filename, "r", encoding="utf-8") as filec:
+        content = filec.read()
+    stats = os.stat(filename)
+    creation_date = datetime.utcfromtimestamp(
+        int(stats.st_mtime)).strftime('%d-%m-%Y')
+    creation_time = datetime.utcfromtimestamp(
+        int(stats.st_mtime)).strftime('%H:%M:%S')
+    size = bytes2KB(stats.st_size)
+    return render_template(
+        "admin.html",
+        filename=file,
+        file_content=content,
+        creation_date=creation_date,
+        creation_time=creation_time,
+        size=size
+    )
+
+
 @app.route("/tos")
 def tos():
-    return "TOS"
+    with open(os.path.join(DATA, "tos"), "r", encoding="utf-8") as file:
+        filec = file.read()
+    return render_template("tos.html", file_content=filec)
 
 
 @app.route("/hol")
 def hall_of_loosers():
-    return render_template("hol.html")
+    global loosers_list
+    refreshLoosers()
+    return render_template(
+        "hol.html",
+        loosers_list=loosers_list
+    )
+
+
+@app.route("/links")
+@app.route("/pages")
+def list_of_pages():
+    return render_template("pages.html")
 
 
 if __name__ == "__main__":

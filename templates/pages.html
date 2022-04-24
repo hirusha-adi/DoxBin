@@ -1,0 +1,100 @@
+{% extends "navbar.html" %}
+
+{% block top %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Doxbin - Links</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='legacy/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='legacy/dropdown.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='files/doxbin.css') }}">
+
+    <style>
+        .admin-text {
+            color: red;
+            font-weight: bold;
+        }
+
+        p.faq b {
+            margin-left: -3px;
+        }
+    </style>
+
+</head>
+
+<body class="bin" style="color: white; background-color: black;">
+    {% endblock %}
+
+    {% block bottom %}
+
+    <div class="container">
+
+        <div style="margin-top: 70px">
+
+            <center>
+
+                This page has a list of all available publicly accessible web pages of this website
+
+                <h6 style="margin: 20px 0 0 0;padding:0;font-weight:bold;">
+                    <a href="{{ url_for('index') }}">
+                        / - Home
+                    </a>
+                </h6>
+                <p style="margin: 0;padding-left:10px;">
+                    Home Page. Doxbin is a document sharing and publishing website
+                    for text-based information such as dox, code-snippets and other stuff.
+                </p>
+
+                <h6 style="margin: 20px 0 0 0;padding:0;font-weight:bold;">
+                    <a href="{{ url_for('tos') }}">
+                        /tos
+                    </a>
+                </h6>
+                <p style="margin: 0;padding-left:10px;">
+                    Terms of Service. Here at Doxbin, we supply users with the
+                    ability to upload text information without the fear of censorship.
+                </p>
+
+                <h6 style="margin: 20px 0 0 0;padding:0;font-weight:bold;">
+                    <a href="{{ url_for('hall_of_loosers') }}">
+                        /hol
+                    </a>
+                </h6>
+                <p style="margin: 0;padding-left:10px;">
+                    Hall of Loosers. Here lies the bullied, antisocial & doxed rejects who
+                    stepped into the wrong side of the internet.
+                </p>
+
+                <h6 style="margin: 20px 0 0 0;padding:0;font-weight:bold;">
+                    <a href="{{ url_for('new_paste') }}">
+                        /new
+                    </a>
+                </h6>
+                <p style="margin: 0;padding-left:10px;">
+                    New Post. This page can be used to create a new paste
+                </p>
+
+                <h6 style="margin: 20px 0 0 0;padding:0;font-weight:bold;">
+                    <a href="{{ url_for('list_of_pages') }}">
+                        /pages
+                    </a>
+                </h6>
+                <p style="margin: 0;padding-left:10px;">
+                    List of All Pages. This page has a list of all available publicly
+                    accessible web pages of this website
+                </p>
+
+            </center>
+
+        </div>
+    </div>
+</body>
+
+</html>
+
+{% endblock %}

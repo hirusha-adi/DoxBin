@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Doxbin - {{ filename }}</title>
+    <title>Doxbin - Terms of Service</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='legacy/app.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='legacy/google-code-prettify/tomorrow-night.css') }}">
@@ -15,7 +15,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Created on {{ creation_date }}. Size: {{ size }} KB">
+    <meta name="description" content="Terms of Service - Doxbin">
 
     <style>
         select,
@@ -151,100 +151,25 @@
 </head>
 
 <body class="bin" style="overflow-x: hidden;">
+
+
+
     <div class="wrapper">
         <div class="table">
-
-            <!-- <a href="#" class="show-sidebar show"><i class="fa fa-arrow-right"></i></a> -->
-
-            <div class="sidebar">
-                <a class="sidebar-logo" href="{{ url_for('index') }}">
-                    <pre>
-  ____            _     _       
- |  _ \  _____  _| |__ (_)_ __  
- | | | |/ _ \ \/ / '_ \| | '_ \ 
- | |_| | (_) &gt;  &lt;| |_) | | | | |
- |____/ \___/_/\_\_.__/|_|_| |_|
-                    </pre>
-                </a>
-
-                <div class="options" style="padding-top:3px;">
-                    <div class="paste-properties">
-                    </div>
-
-                    <p>
-                        <span style="font-weight:bold; color: white;">
-                            Title:
-                        </span>
-                        <span style="float: right;">
-                            {{ filename }}
-                        </span>
-                    </p>
-                    <p>
-                        <span style="font-weight:bold; color: white;">
-                            Size:
-                        </span>
-                        <span style="float: right;">
-                            {{ size }} KB
-                        </span>
-                    </p>
-                    <p>
-                        <span style="font-weight:bold; color: white;">
-                            Time:
-                        </span>
-                        <span style="float: right;">
-                            {{ creation_time }}
-                        </span>
-                    </p>
-                    <p>
-                        <span style="font-weight:bold; color: white;">
-                            Date:
-                        </span>
-                        <span style="float: right;">
-                            {{ creation_date }}
-                        </span>
-                    </p>
-                    <p>
-                        <span style="font-weight:bold; color: white;">
-                            By:
-                        </span>
-                        <span style="float: right;">
-                            -
-                        </span>
-                    </p>
-
-                </div>
-
-                <div class="options" id="btns">
-                    <ul>
-                        <li><a href="{{ url_for('new_paste') }}" class="btn new">New</a></li>
-                        <li><a href="{{ url_for('tos') }}" class="btn new">Terms of Service</a></li>
-
-                    </ul>
-                </div>
-
-                <div class="options r-hide" id="tos-display">
-                    <p style="margin-top: 0;color: white;">
-                        Please note that all posted information is publicly available and must follow our
-                        <a href="{{ url_for('tos') }}" style="text-decoration: underline;">
-                            TOS.
-                        </a>
-                    </p>
-                </div>
-
-            </div>
-
-            <h1 style="">
-                <a href="{{ url_for('index') }}">Back to Home</a>
+            <!-- Go back to top -->
+            <h1 style="text-align: center;">
+                <a href="{{ url_for('index') }}">Back to home</a>
+                <br><br>
             </h1>
 
-            <div class="show-container" style="padding-left: 20px;">
-                <pre id="dox-content-text" style="color: white; margin: 0;">{{ file_content }}</pre>
+            <div class="">
+                <div class="show-container" style="padding-left: 20px;">
+                    <pre style="color: white; margin: 0;">{{ file_content }}</pre>
+                </div>
             </div>
 
         </div>
     </div>
-
-
 
 </body>
 

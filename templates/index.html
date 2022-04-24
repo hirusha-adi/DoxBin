@@ -87,19 +87,9 @@
 </head>
 
 <body>
-
-    <!-- Navbar - Starts Here -->
     {% endblock %}
 
     {% block bottom %}
-
-    <!-- Navbar - Ends Here -->
-
-    <!-- Inherited Content Starts here -->
-    {% block content %}
-    {% endblock %}
-    <!-- Inherited Content Ends here -->
-
 
     <div class="col-md-12">
         <div class="col-md-12" style="margin-top: 60px;float:none;">
@@ -179,7 +169,7 @@
 
                 <h5 class="announcement a-2" style="color:#00AAFF;">
                     <u>
-                        <a style="color:inherit;" href="{{ url_for('all_links') }}">
+                        <a style="color:inherit;" href="{{ url_for('list_of_pages') }}">
                             All Pages
                         </a>
                     </u>
@@ -235,7 +225,7 @@
 
                     <tr class="doxentry">
                         <td colspan="3" style="overflow: hidden; text-overflow: ellipsis;">
-                            <a title="zalgo poor retard" href="https://doxbin.org/upload/zalgopoorretard">
+                            <a title="zalgo poor retard" href="{{ url_for('admin_post', file=admin_post.name) }}">
                                 {{ admin_post.name }}
                             </a>
                         </td>
@@ -256,6 +246,7 @@
                     </tr>
 
                     {% endfor %}
+
                 </tbody>
             </table>
 

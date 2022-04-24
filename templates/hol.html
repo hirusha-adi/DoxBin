@@ -302,7 +302,7 @@
 
     <script>
         var colour = "random";
-        var sparkles = 50;
+        var sparkles = 900;
 
         var x = ox = 400;
         var y = oy = 300;
@@ -492,6 +492,7 @@
             return ("rgb(" + c[0] + ", " + c[1] + ", " + c[2] + ")");
         }
     </script>
+
 </head>
 
 <body>
@@ -511,6 +512,7 @@
         </div>
         <div class="container" style="margin-top:20px;">
 
+            <!-- 
             <div class="hoa-container">
                 <div class="hoa-image">
                     <img src="https://doxbin.com/files/hoa/white/arion.jpg">
@@ -526,7 +528,29 @@
                     Begged kt to stop texting his friends and family.<br>
                     Folded, cried & ran at the first sight of someone @ his crib.<br>
                 </div>
+            </div> 
+            -->
+
+            {% for looser in loosers_list %}
+            <div class="hoa-container">
+                <div class="hoa-image">
+                    <img src="{{ looser.image }}">
+                </div>
+                <div class="hoa-name rainbow">
+                    {{ looser.topic }}
+                </div>
+                <div class="hoa-description">
+                    <b>{{ looser.subtopic }}</b>
+                    <br>
+                    {% for line in looser.body %}
+                    {{ line }}
+                    <br>
+                    {% endfor %}
+                </div>
             </div>
+            {% endfor %}
+
+            <!-- loosers_list -->
 
         </div>
     </div>

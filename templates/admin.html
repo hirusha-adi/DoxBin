@@ -181,6 +181,14 @@
                     </p>
                     <p>
                         <span style="font-weight:bold; color: white;">
+                            By:
+                        </span>
+                        <span style="float: right; color: red;">
+                            Admin
+                        </span>
+                    </p>
+                    <p>
+                        <span style="font-weight:bold; color: white;">
                             Size:
                         </span>
                         <span style="float: right;">
@@ -201,14 +209,6 @@
                         </span>
                         <span style="float: right;">
                             {{ creation_date }}
-                        </span>
-                    </p>
-                    <p>
-                        <span style="font-weight:bold; color: white;">
-                            By:
-                        </span>
-                        <span style="float: right;">
-                            -
                         </span>
                     </p>
 
@@ -233,18 +233,12 @@
 
             </div>
 
-            <h1 style="">
-                <a href="{{ url_for('index') }}">Back to Home</a>
-            </h1>
-
             <div class="show-container" style="padding-left: 20px;">
-                <pre id="dox-content-text" style="color: white; margin: 0;">{{ file_content }}</pre>
+                <pre style="color: white; margin: 0;">{{ file_content }}</pre>
             </div>
 
         </div>
     </div>
-
-
 
 </body>
 

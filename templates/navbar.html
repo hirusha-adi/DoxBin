@@ -23,7 +23,7 @@
 
             <!-- Left -->
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li class="">
                     <a href="{{ url_for('index') }}">
                         Home
                     </a>
@@ -48,7 +48,7 @@
             <!-- Right -->
             <div class="sidebar-right">
                 <ul class="nav navbar-nav">
-                    <li><a href="/login">All Pages</a></li>
+                    <li><a href="{{ url_for('list_of_pages') }}">All Pages</a></li>
                 </ul>
             </div>
 
